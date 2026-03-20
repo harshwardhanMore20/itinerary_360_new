@@ -285,7 +285,7 @@ button { font-family: 'Outfit', sans-serif; }
    FOOTER
    ================================================================ */
 .site-footer {
-    background: var(--ink);
+    background: #1a1108;
     color: rgba(255,255,255,0.7);
     margin-top: 80px;
 }
@@ -297,14 +297,14 @@ button { font-family: 'Outfit', sans-serif; }
     padding: 64px 80px 48px;
 }
 
-.footer-brand .logo { color: var(--warm-white); margin-bottom: 16px; display: block; }
+.footer-brand .logo { color: #ffffff; margin-bottom: 16px; display: block; }
 .footer-brand p { font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 280px; }
 
 .footer-col h4 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.1rem;
     font-weight: 600;
-    color: var(--warm-white);
+    color: #ffffff;
     margin-bottom: 16px;
 }
 
