@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login – Itinerary 360</title>
+    <link rel="stylesheet" href="../styles/login.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">Itinerary <em>360</em></a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#all-destinations">Destinations</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main class="login-main">
+        <div class="login-card">
+            <span class="stamp">Maharashtra ✦</span>
+
+            <p class="card-eyebrow">Welcome back</p>
+            <h1 class="card-title">Log in to<br>your journey</h1>
+            <p class="card-sub">No account yet? <a href="#">Create one free →</a></p>
+
+            <div class="error-msg" id="errorMsg" role="alert"></div>
+
+            <form id="loginForm" novalidate>
+
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email"
+                           placeholder="you@example.com"
+                           autocomplete="email" required>
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password"
+                           placeholder="••••••••"
+                           autocomplete="current-password" required>
+                    <span class="toggle-pw" id="togglePw" role="button" tabindex="0">Show</span>
+                </div>
+
+                <div class="options">
+                    <label class="checkbox-wrap">
+                        <input type="checkbox" name="remember">
+                        Keep me signed in
+                    </label>
+                    <a href="#" class="forgot">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn-login">
+                    Log In <span class="arrow">→</span>
+                </button>
+
+            </form>
+
+            <div class="divider"><span>or continue with</span></div>
+
+            <div class="social-row">
+                <button class="btn-social" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.8 19.79 19.79 0 01.12 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                    </svg>
+                    Phone
+                </button>
+                <button class="btn-social" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    Guest
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="login-footer">
+        &copy; 2025 Itinerary 360 &nbsp;&middot;&nbsp;
+        <a href="about.html">About</a> &nbsp;&middot;&nbsp;
+        <a href="#">Privacy</a> &nbsp;&middot;&nbsp;
+        <a href="#">Terms</a>
+    </footer>
+
+    <script>
+        const pwInput = document.getElementById('password');
+        const toggle  = document.getElementById('togglePw');
+
+        toggle.addEventListener('click', toggleVisibility);
+        toggle.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') toggleVisibility(); });
+
+        function toggleVisibility() {
+            const hidden = pwInput.type === 'password';
+            pwInput.type       = hidden ? 'text' : 'password';
+            toggle.textContent = hidden ? 'Hide' : 'Show';
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const pw    = document.getElementById('password').value;
+            const errEl = document.getElementById('errorMsg');
+
+            if (!email || !pw) {
+                errEl.textContent = 'Please fill in both email and password.';
+                errEl.classList.add('show');
+                return;
+            }
+
+            errEl.classList.remove('show');
+            // Store email for profile
+            localStorage.setItem('i360_profile_email', email);
+            const name = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, ' ');
+            localStorage.setItem('i360_profile_username', name.charAt(0).toUpperCase() + name.slice(1));
+
+            // Redirect to profile
+            window.location.href = 'profile.html';
+        });
+    </script>
+
+</body>
+</html>

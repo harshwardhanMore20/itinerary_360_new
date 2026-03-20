@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinhagad Fort — Pune's Pride — Itinerary 360</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+    <header class="navbar" id="mainNavbar"></header>
+    <main class="destination-page" id="destMain"></main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="../pages/index.html" class="logo">Itinerary <em>360</em></a>
+                <p>Your guide to the best of Maharashtra — from coastal escapes to misty hill stations and ancient sacred sites.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Forts</h4>
+                <a href="raigad-fort.html">Raigad Fort</a>
+                <a href="sinhagad-fort.html">Sinhagad Fort</a>
+                <a href="pratapgad-fort.html">Pratapgad Fort</a>
+                <a href="lohagad-fort.html">Lohagad Fort</a>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="../pages/index.html">All Destinations</a>
+                <a href="../pages/profile.html">My Wishlist</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="../pages/about.html">About Us</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2025 Itinerary 360 — PVPIT Sangli</span>
+            <span>Made with ♥ in Maharashtra</span>
+        </div>
+    </footer>
+
+    <div id="globalToast" class="toast"></div>
+    <script src="../js/wishlist.js"></script>
+    <script src="../js/destination-builder.js"></script>
+    <script>
+        buildDestinationPage({
+            id:       'sinhagad',
+            name:     'Sinhagad Fort',
+            sub:      'Pune',
+            badge:    'Heritage Fort',
+            tag:      'fort',
+            href:     'sinhagad-fort.html',
+            img:      '../assets/sinhagad.jpg',
+            title:    'Sinhagad Fort: The Lion\'s Fort of Pune',
+            subtitle: 'A legendary hilltop fortress where Tanaji Malusare made his heroic sacrifice — offering breathtaking views and deep Maratha history.',
+            tags:     ['🏰 Heritage Fort', '⚔️ Maratha History', '🥾 Trekking', '📸 Scenic Views', '🌿 Nature'],
+
+            stats: [
+                { label: 'Elevation',    value: '1,312 m (4,305 ft)' },
+                { label: 'Location',     value: '25 km from Pune City' },
+                { label: 'Best Season',  value: 'Oct – Feb / Monsoon Trek' },
+                { label: 'Trek Grade',   value: 'Easy to Moderate' },
+            ],
+
+            places: [
+                { name: 'Tanaji Memorial',   icon: '🗿', img: '', desc: 'A tribute to the legendary warrior Tanaji Malusare who sacrificed his life to capture the fort in 1670.' },
+                { name: 'Konde Khind',       icon: '⛰', img: '', desc: 'The famous cliff where Tanaji and his soldiers climbed using a monitor lizard (ghorpad) — a legendary story.' },
+                { name: 'Kalyan Darwaja',    icon: '🚪', img: '', desc: 'The impressive main gateway of the fort, named after the direction it faces towards Kalyan.' },
+                { name: 'Pune Panorama',     icon: '📸', img: '', desc: 'Stunning 360° views of Pune city, Khadakwasla Dam, and the surrounding Sahyadri hills.' },
+            ],
+
+            activities: [
+                { icon: '🥾', name: 'Trek to the Fort',         desc: 'A 1–2 hour moderate trek from the base village through lush greenery and rocky trails.' },
+                { icon: '🌅', name: 'Sunrise Watch',            desc: 'Catch a spectacular sunrise over the Sahyadri ranges — arrive by 5 AM for the best views.' },
+                { icon: '📸', name: 'Photography',              desc: 'Capture panoramic views of Pune, monsoon mist, and ancient fort ruins.' },
+                { icon: '🍽', name: 'Local Snacks',             desc: 'Try traditional Maharashtrian snacks like bhakri, pitla, and the famous sinhagad curd at stalls near the fort.' },
+                { icon: '🏕', name: 'Camping',                  desc: 'Stay overnight under the stars on the fort plateau with permission from local authorities.' },
+                { icon: '🎭', name: 'Historical Walk',          desc: 'Explore the Tanaji Malusare monument, water tanks, and ruins of the Maratha era.' },
+            ],
+
+            sections: [
+                {
+                    icon: '⚔️',
+                    title: 'Historical Significance',
+                    items: [
+                        'Sinhagad has a history of over 2,000 years and has been contested by several rulers.',
+                        'The fort was called "Kondana" until Tanaji Malusare\'s heroic recapture in 1670, after which Shivaji Maharaj renamed it Sinhagad (Lion\'s Fort).',
+                        'Tanaji\'s famous quote: "Gad aala pan sinh gela" (The fort is won but the lion is gone) moved Shivaji deeply.',
+                        'The fort changed hands many times — Adilshahi, Mughals, Marathas — making it one of Maharashtra\'s most contested fortifications.',
+                    ]
+                },
+                {
+                    icon: '🧭',
+                    title: 'How to Reach',
+                    items: [
+                        'By road: 25 km from Pune — take the Sinhagad road via Khanapur.',
+                        'Trekking base: Start from Sinhagad village or Donje village for different trail options.',
+                        'By public transport: PMPML buses available from Swargate to Sinhagad base.',
+                        'Best time: Monsoon (July–Sept) for lush greenery; Oct–Feb for clear views and comfortable weather.',
+                    ]
+                },
+            ],
+
+            tips: [
+                { icon: '⏰', title: 'Best Time to Visit',  content: ['Oct–Feb for clear skies and cool weather', 'Monsoon for green landscapes (July–Sept)', 'Avoid weekends — very crowded', 'Reach by 6 AM on weekdays for peace'] },
+                { icon: '🎒', title: 'What to Carry',       content: ['2–3 litres of water', 'Light snacks', 'Trekking shoes', 'Sunscreen and hat for summer visits', 'Raincoat in monsoon'] },
+            ],
+        });
+    </script>
+</body>
+</html>

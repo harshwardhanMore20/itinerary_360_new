@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajmachi Fort — Twin Peaks of the Sahyadri — Itinerary 360</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <header class="navbar" id="mainNavbar"></header>
+    <main class="destination-page" id="destMain"></main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand"><a href="../pages/index.html" class="logo">Itinerary <em>360</em></a><p>Your guide to Maharashtra.</p></div>
+            <div class="footer-col"><h4>Forts</h4><a href="raigad-fort.html">Raigad</a><a href="sinhagad-fort.html">Sinhagad</a><a href="pratapgad-fort.html">Pratapgad</a><a href="lohagad-fort.html">Lohagad</a></div>
+            <div class="footer-col"><h4>Explore</h4><a href="../pages/index.html">All Destinations</a></div>
+            <div class="footer-col"><h4>Company</h4><a href="../pages/about.html">About Us</a></div>
+        </div>
+        <div class="footer-bottom"><span>&copy; 2025 Itinerary 360</span><span>Made with ♥ in Maharashtra</span></div>
+    </footer>
+
+    <div id="globalToast" class="toast"></div>
+    <script src="../js/wishlist.js"></script>
+    <script src="../js/destination-builder.js"></script>
+    <script>
+        buildDestinationPage({
+            id:       'rajmachi',
+            name:     'Rajmachi',
+            sub:      'Sahyadri Range',
+            badge:    'Fort Trek',
+            tag:      'fort',
+            href:     'rajmachi.html',
+            img:      '../assets/rajmachi.jpg',
+            title:    'Rajmachi Fort: Twin Peaks of the Sahyadri',
+            subtitle: 'Two forts — Shrivardhan and Manaranjan — sitting atop the Western Ghats, offering breathtaking valley views, a scenic base village, and one of Maharashtra\'s most rewarding overnight treks.',
+            tags:     ['🏰 Twin Forts', '🥾 Overnight Trek', '🌿 Nature', '⛰ Sahyadri', '📸 Views'],
+
+            stats: [
+                { label: 'Elevation',      value: '925 m (3,035 ft)' },
+                { label: 'Twin Forts',     value: 'Shrivardhan & Manaranjan' },
+                { label: 'Base Village',   value: 'Udhewadi' },
+                { label: 'Best Season',    value: 'Monsoon & Winter' },
+            ],
+
+            places: [
+                { name: 'Shrivardhan Fort',   icon: '🏯', img: '', desc: 'The larger and more prominent of the twin forts, with excellent views over the Konkan coast and Sahyadri valleys.' },
+                { name: 'Manaranjan Fort',    icon: '🏯', img: '', desc: 'The smaller companion fort, offering equally spectacular views and a more secluded experience.' },
+                { name: 'Udhewadi Village',   icon: '🏘', img: '', desc: 'The charming base village with simple homestays, local food, and incredibly warm hospitality from the villagers.' },
+                { name: 'Kondana Caves',      icon: '🦇', img: '', desc: '2,000-year-old Buddhist caves near the base, a UNESCO heritage site with magnificent carved viharas.' },
+            ],
+
+            activities: [
+                { icon: '🥾', name: 'Overnight Trek',        desc: 'The classic Rajmachi experience — trek from Lonavala (13 km), spend a night in Udhewadi village, explore the forts next morning.' },
+                { icon: '🏕', name: 'Village Camping',       desc: 'Camp in Udhewadi and wake up to incredible sunrise views over the ghats — homestays available for ₹500–800 per person.' },
+                { icon: '⛪', name: 'Kondana Caves Visit',   desc: 'Explore the ancient Buddhist cave monastery dating back to the 1st–2nd century BCE, a 30-min detour from the trail.' },
+                { icon: '🌄', name: 'Sunrise at Shrivardhan',desc: 'Climb Shrivardhan for a sunrise that reveals the entire Sahyadri range in golden light — unforgettable.' },
+                { icon: '🦋', name: 'Wildlife Spotting',     desc: 'The dense forests around Rajmachi are home to leopards, barking deer, and hundreds of bird species.' },
+                { icon: '📸', name: 'Monsoon Photography',   desc: 'July–September transforms Rajmachi into a lush green paradise with waterfalls and mist — a photographer\'s dream.' },
+            ],
+
+            sections: [
+                {
+                    icon: '🏰',
+                    title: 'About Rajmachi',
+                    items: [
+                        'Rajmachi comprises two fortifications — Shrivardhan and Manaranjan — built to guard the ancient trade routes through the Sahyadri.',
+                        'The fort was of strategic importance controlling the Borghat pass — one of the main passages between the Konkan coast and the Deccan plateau.',
+                        'Shivaji Maharaj strengthened the fort in the 17th century, and it served as a key Maratha stronghold.',
+                        'The Kondana Caves nearby are one of Maharashtra\'s most important Buddhist heritage sites, dating back 2,000 years.',
+                    ]
+                },
+                {
+                    icon: '🧭',
+                    title: 'How to Reach',
+                    items: [
+                        'Starting point: Lonavala (most popular) — 13 km trek to base village Udhewadi.',
+                        'Alternative start: Khandas village near Karjat for a different route.',
+                        'By train to Lonavala (on Pune–Mumbai line), then auto/cab to trek start point.',
+                        'Road access: A rough jeep track reaches Udhewadi — suitable for high-clearance vehicles in dry season.',
+                    ]
+                },
+            ],
+
+            tips: [
+                { icon: '🏕', title: 'Stay in Udhewadi',  content: ['Multiple homestays in the village (₹500–800/person)', 'Book in advance on weekends', 'Meals included in most packages', 'Very basic facilities — bring your own sleeping bag'] },
+                { icon: '🌧', title: 'Monsoon Notes',      content: ['Best time: July–September', 'Trail becomes slippery after rain', 'Carry trekking poles', 'Check weather before going — heavy rains make it dangerous'] },
+            ],
+        });
+    </script>
+</body>
+</html>

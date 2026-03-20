@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratapgad Fort — Satara's Crown — Itinerary 360</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <header class="navbar" id="mainNavbar"></header>
+    <main class="destination-page" id="destMain"></main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="../pages/index.html" class="logo">Itinerary <em>360</em></a>
+                <p>Your guide to the best of Maharashtra.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Forts</h4>
+                <a href="raigad-fort.html">Raigad Fort</a>
+                <a href="sinhagad-fort.html">Sinhagad Fort</a>
+                <a href="pratapgad-fort.html">Pratapgad Fort</a>
+                <a href="lohagad-fort.html">Lohagad Fort</a>
+            </div>
+            <div class="footer-col"><h4>Explore</h4><a href="../pages/index.html">All Destinations</a></div>
+            <div class="footer-col"><h4>Company</h4><a href="../pages/about.html">About Us</a></div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2025 Itinerary 360 — PVPIT Sangli</span>
+            <span>Made with ♥ in Maharashtra</span>
+        </div>
+    </footer>
+
+    <div id="globalToast" class="toast"></div>
+    <script src="../js/wishlist.js"></script>
+    <script src="../js/destination-builder.js"></script>
+    <script>
+        buildDestinationPage({
+            id:       'pratapgad',
+            name:     'Pratapgad Fort',
+            sub:      'Satara District',
+            badge:    'Maratha Fort',
+            tag:      'fort',
+            href:     'pratapgad-fort.html',
+            img:      '../assets/pratapgad.jpg',
+            title:    'Pratapgad Fort: Where History Was Made',
+            subtitle: 'The site of the famous Battle of Pratapgad in 1659, where Shivaji Maharaj defeated the Bijapur general Afzal Khan — a turning point in Maratha history.',
+            tags:     ['🏰 Maratha Fort', '⚔️ Battle Site', '🌄 Scenic', '🥾 Trek', '🛕 Bhavani Temple'],
+
+            stats: [
+                { label: 'Elevation',    value: '1,080 m (3,543 ft)' },
+                { label: 'Location',     value: 'Near Mahabaleshwar, Satara' },
+                { label: 'Built By',     value: 'Shivaji Maharaj, 1656' },
+                { label: 'Best Season',  value: 'Oct – Mar' },
+            ],
+
+            places: [
+                { name: 'Afzal Khan\'s Tomb',    icon: '🗿', img: '', desc: 'The dargah of Afzal Khan, built near the spot where he was killed during the famous 1659 battle.' },
+                { name: 'Bhavani Temple',         icon: '🛕', img: '', desc: 'Ancient temple of Goddess Bhavani, the personal deity of Shivaji Maharaj, atop the upper fort.' },
+                { name: 'Shivaji Maharaj Statue', icon: '🗽', img: '', desc: 'A 17-foot bronze statue of Chhatrapati Shivaji Maharaj erected in 1957, inaugurated by PM Nehru.' },
+                { name: 'Upper & Lower Fort',     icon: '🏯', img: '', desc: 'The fort has two levels — the lower fort with bastions and the upper fort with the palace and temple complex.' },
+            ],
+
+            activities: [
+                { icon: '🥾', name: 'Fort Trek',              desc: 'A relatively easy 1-hour climb from the base with well-maintained steps and handrails.' },
+                { icon: '🙏', name: 'Temple Visit',           desc: 'Seek blessings at the Bhavani Temple, especially during Navratri when thousands of devotees visit.' },
+                { icon: '📸', name: 'Photography',            desc: 'Photograph the dense Sahyadri forests, Koyna valley below, and the dramatic fort architecture.' },
+                { icon: '🏕', name: 'Camping',                desc: 'Camp at the fort plateau with stunning valley views — best during clear winter nights.' },
+                { icon: '📖', name: 'History Tour',           desc: 'Walk through the battle site locations and learn about the 1659 battle from local guides.' },
+                { icon: '🌿', name: 'Nature Walk',            desc: 'The area around Pratapgad is rich in endemic flora. Combine with a visit to nearby Mahabaleshwar.' },
+            ],
+
+            sections: [
+                {
+                    icon: '⚔️',
+                    title: 'The Battle of Pratapgad (1659)',
+                    items: [
+                        'In November 1659, Adilshahi general Afzal Khan marched with a large army to crush Shivaji Maharaj.',
+                        'Shivaji arranged a meeting at the foothills of Pratapgad, where he killed Afzal Khan in self-defence using the famous "wagh nakh" (tiger claws).',
+                        'The Maratha army then launched a surprise attack, routing the much larger Bijapur force — a defining moment in Maratha rise to power.',
+                        'This victory established Shivaji as a major political force in the Deccan and inspired countless Marathas to join his cause.',
+                    ]
+                },
+                {
+                    icon: '🧭',
+                    title: 'How to Reach',
+                    items: [
+                        'Located 23 km from Mahabaleshwar — easily combined with a Mahabaleshwar trip.',
+                        'Drive via Poladpur-Mahabaleshwar road (NH166B) — well-connected and scenic.',
+                        'Buses available from Mahabaleshwar to Pratapgad base.',
+                        'Nearest railhead: Watad (75 km) or Pune (120 km).',
+                    ]
+                },
+            ],
+
+            tips: [
+                { icon: '⏰', title: 'Best Time to Visit', content: ['Oct–Mar for best weather', 'Navratri for the Bhavani temple festival', 'Avoid peak summer (Apr–Jun) — very hot', 'Monsoon adds drama but trails can be slippery'] },
+                { icon: '💡', title: 'Local Tips',         content: ['Combine with Mahabaleshwar in one day trip from Pune', 'Local guides available at the base — worth hiring', 'Small shops sell local honey and strawberry products nearby', 'Entry is free — open from sunrise to sunset'] },
+            ],
+        });
+    </script>
+</body>
+</html>

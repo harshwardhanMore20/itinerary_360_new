@@ -1,0 +1,426 @@
+/* ============================================================
+   profile.css — Profile & Wishlist page styles
+   ============================================================ */
+
+.profile-page {
+    max-width: 1000px;
+    margin: 48px auto 80px;
+    padding: 0 24px;
+}
+
+/* ── Page Header ── */
+.profile-page-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px 36px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow-sm);
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--amber), var(--amber-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.profile-page-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+}
+
+.profile-page-header p { color: var(--muted); font-size: 0.9rem; }
+
+/* ── Tabs ── */
+.profile-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 28px;
+    background: var(--warm-white);
+    padding: 4px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    width: fit-content;
+}
+
+.profile-tab {
+    padding: 9px 24px;
+    border-radius: 100px;
+    border: none;
+    background: transparent;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.profile-tab.active {
+    background: var(--amber);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 2px 10px rgba(212,132,26,0.3);
+}
+
+.profile-tab:not(.active):hover { color: var(--ink); background: var(--cream); }
+
+/* ── Tab Content ── */
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── Profile Section ── */
+.profile-section {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.profile-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.profile-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+}
+
+.profile-field:last-child { border-bottom: none; }
+.field-label { font-size: 0.82rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+.field-value { font-size: 0.95rem; color: var(--ink); font-weight: 500; flex: 1; text-align: center; }
+
+.edit-btn {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--amber);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 100px;
+    transition: background var(--transition);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.edit-btn:hover { background: var(--amber-glow); }
+
+.logout-btn {
+    width: 100%;
+    padding: 14px;
+    border: 1.5px solid #e74c3c;
+    background: transparent;
+    color: #e74c3c;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.logout-btn:hover { background: #e74c3c; color: white; }
+
+/* ================================================================
+   WISHLIST SECTION
+   ================================================================ */
+.wishlist-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    gap: 16px;
+}
+
+.wishlist-panel-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.wishlist-count-badge {
+    background: var(--amber);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-left: 10px;
+}
+
+.clear-wishlist-btn {
+    background: transparent;
+    border: 1.5px solid var(--border);
+    color: var(--muted);
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.clear-wishlist-btn:hover { border-color: #e74c3c; color: #e74c3c; }
+
+/* ── Wishlist Tabs (Destinations vs Activities) ── */
+.wishlist-subtabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0;
+}
+
+.wishlist-subtab {
+    padding: 9px 20px;
+    border: none;
+    background: transparent;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all var(--transition);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+}
+
+.wishlist-subtab.active {
+    color: var(--amber);
+    font-weight: 600;
+    border-bottom-color: var(--amber);
+}
+
+.wishlist-subtab:not(.active):hover { color: var(--ink); }
+
+.wishlist-subpanel { display: none; }
+.wishlist-subpanel.active { display: block; }
+
+/* ── Destination Wishlist Cards ── */
+.wishlist-dest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.wishlist-dest-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all var(--transition);
+    position: relative;
+}
+
+.wishlist-dest-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+}
+
+.wishlist-dest-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #f0e0c0, #d4a96a);
+}
+
+.wishlist-dest-body { padding: 16px 18px; }
+
+.wishlist-dest-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 6px;
+}
+
+.wishlist-dest-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+}
+
+.wishlist-dest-meta { font-size: 0.78rem; color: var(--muted); }
+
+.wishlist-dest-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.visit-btn {
+    flex: 1;
+    padding: 8px 14px;
+    background: var(--amber-glow);
+    border: 1px solid rgba(212,132,26,0.2);
+    color: var(--amber);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.visit-btn:hover { background: var(--amber); color: white; border-color: var(--amber); }
+
+.remove-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all var(--transition);
+    flex-shrink: 0;
+}
+
+.remove-btn:hover { background: #fff0ee; border-color: #e74c3c; color: #e74c3c; }
+
+/* ── Activity Wishlist ── */
+.wishlist-activities-list {
+    display: grid;
+    gap: 12px;
+}
+
+.wishlist-act-item {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all var(--transition);
+}
+
+.wishlist-act-item:hover {
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-sm);
+}
+
+.act-icon-bubble {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    background: var(--amber-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+.act-details { flex: 1; min-width: 0; }
+
+.act-details h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 3px;
+}
+
+.act-details p { font-size: 0.8rem; color: var(--muted); }
+
+.act-location-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--amber);
+    background: var(--amber-glow);
+    padding: 3px 10px;
+    border-radius: 100px;
+    white-space: nowrap;
+}
+
+.act-remove-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all var(--transition);
+    flex-shrink: 0;
+}
+
+.act-remove-btn:hover { background: #fff0ee; border-color: #e74c3c; color: #e74c3c; }
+
+/* ── Empty State ── */
+.empty-wishlist {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+}
+
+.empty-wishlist .empty-icon { font-size: 3.5rem; margin-bottom: 16px; opacity: 0.5; }
+.empty-wishlist h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.empty-wishlist p { font-size: 0.9rem; margin-bottom: 24px; }
+
+.browse-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--amber);
+    color: white;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all var(--transition);
+    text-decoration: none;
+}
+
+.browse-btn:hover { background: var(--amber-dark); transform: translateY(-2px); }
+
+/* ================================================================
+   RESPONSIVE — PROFILE
+   ================================================================ */
+@media (max-width: 600px) {
+    .profile-page { padding: 0 16px; margin-top: 32px; }
+    .profile-page-header { padding: 20px; flex-direction: column; text-align: center; }
+    .profile-section { padding: 20px; }
+    .wishlist-dest-grid { grid-template-columns: 1fr; }
+}

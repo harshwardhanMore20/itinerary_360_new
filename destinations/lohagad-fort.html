@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lohagad Fort — Iron Fort of the Sahyadri — Itinerary 360</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <header class="navbar" id="mainNavbar"></header>
+    <main class="destination-page" id="destMain"></main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="../pages/index.html" class="logo">Itinerary <em>360</em></a>
+                <p>Your guide to the best of Maharashtra.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Forts</h4>
+                <a href="raigad-fort.html">Raigad Fort</a>
+                <a href="sinhagad-fort.html">Sinhagad Fort</a>
+                <a href="pratapgad-fort.html">Pratapgad Fort</a>
+                <a href="lohagad-fort.html">Lohagad Fort</a>
+            </div>
+            <div class="footer-col"><h4>Explore</h4><a href="../pages/index.html">All Destinations</a></div>
+            <div class="footer-col"><h4>Company</h4><a href="../pages/about.html">About Us</a></div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2025 Itinerary 360 — PVPIT Sangli</span>
+            <span>Made with ♥ in Maharashtra</span>
+        </div>
+    </footer>
+
+    <div id="globalToast" class="toast"></div>
+    <script src="../js/wishlist.js"></script>
+    <script src="../js/destination-builder.js"></script>
+    <script>
+        buildDestinationPage({
+            id:       'lohagad',
+            name:     'Lohagad Fort',
+            sub:      'Pune District',
+            badge:    'Trek Fort',
+            tag:      'fort',
+            href:     'lohagad-fort.html',
+            img:      '../assets/lohagad.jpg',
+            title:    'Lohagad Fort: The Iron Fort of the Sahyadri',
+            subtitle: 'One of Maharashtra\'s most popular trekking forts, offering stunning views of Pawna Lake, Visapur Fort, and the lush Sahyadri mountains — a monsoon trekker\'s paradise.',
+            tags:     ['🏰 Trek Fort', '🥾 Trekking', '🌧 Monsoon Trek', '🏞 Pawna Lake Views', '📸 Photography'],
+
+            stats: [
+                { label: 'Elevation',       value: '1,033 m (3,389 ft)' },
+                { label: 'Location',        value: 'Malavli, Pune District' },
+                { label: 'UNESCO Status',   value: 'Part of Sahyadri UNESCO Site' },
+                { label: 'Trek Duration',   value: '1–2 Hours One Way' },
+            ],
+
+            places: [
+                { name: 'Vinchukata (Scorpion Tail)', icon: '🦂', img: '', desc: 'The iconic scorpion-tail-shaped promontory jutting out from the fort — the most photographed viewpoint of Lohagad.' },
+                { name: 'Laxmi Kothi',                icon: '🏯', img: '', desc: 'The treasury where Marathas reportedly stored the treasures captured from Surat — historically significant ruins.' },
+                { name: 'Ganesh Darwaja',             icon: '🚪', img: '', desc: 'The main southern gate of the fort, adorned with intricate carvings of elephants and soldiers.' },
+                { name: 'Water Cisterns',             icon: '💧', img: '', desc: 'Ancient rock-cut water cisterns that stored rainwater for the garrison — still functional during monsoon.' },
+            ],
+
+            activities: [
+                { icon: '🥾', name: 'Monsoon Trek',          desc: 'July–September treks through waterfalls, mist, and lush green trails — the most spectacular time to visit.' },
+                { icon: '📸', name: 'Vinchukata Photography', desc: 'Photograph the dramatic Scorpion Tail viewpoint with Pawna Lake and Visapur Fort as backdrop.' },
+                { icon: '🏕', name: 'Night Camping',         desc: 'Camp on the fort plateau under clear skies — popular with Pune youth groups on weekends.' },
+                { icon: '🔭', name: 'Star Gazing',           desc: 'The fort\'s altitude and low light pollution make it excellent for stargazing on clear nights.' },
+                { icon: '🏞', name: 'Pawna Lake View',       desc: 'Marvel at the stunning views of Pawna Lake reservoir shimmering below.' },
+                { icon: '🚂', name: 'Train Trek Combo',      desc: 'Trek from Malavli railway station (Central Railway) — a classic Pune day-trip by train and feet.' },
+            ],
+
+            sections: [
+                {
+                    icon: '🏰',
+                    title: 'Fort History',
+                    items: [
+                        'Lohagad has a history stretching back over 2,000 years, mentioned in ancient texts and Buddhist cave inscriptions.',
+                        'The fort was used by the Satavahanas, Chalukyas, Rashtrakutas, Yadavas, and the Bahmani Sultanate before the Marathas.',
+                        'Shivaji Maharaj captured Lohagad in 1648 and used it as a treasury, storing wealth from the Surat sack here.',
+                        'Peshwa Vishwasrao and Balaji Baji Rao used the fort extensively in the 18th century as a strategic base.',
+                        'Part of a UNESCO World Heritage nomination as part of the "Serial Nomination of Maratha Military Architecture".',
+                    ]
+                },
+                {
+                    icon: '🧭',
+                    title: 'How to Reach',
+                    items: [
+                        'By Train: Nearest station is Malavli on the Pune–Mumbai Central Railway line — just 3 km from the base.',
+                        'By Road: 52 km from Pune via Pune–Mumbai Expressway; exit at Malavli.',
+                        'Base village: Lohagadwadi — parking available here.',
+                        'Easy 1.5 hour climb with well-marked trails and steps built along the route.',
+                    ]
+                },
+            ],
+
+            tips: [
+                { icon: '🌧', title: 'Monsoon Tips',      content: ['Best visited July–September for waterfalls', 'Carry waterproof bag for camera gear', 'Wear non-slip trekking shoes', 'Leeches present — apply repellent on shoes'] },
+                { icon: '🎒', title: 'What to Carry',     content: ['Water (2–3 litres)', 'Energy snacks', 'First-aid kit', 'Raincoat in monsoon', 'Warm layers for winter mornings'] },
+            ],
+        });
+    </script>
+</body>
+</html>

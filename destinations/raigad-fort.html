@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raigad Fort — Shivaji's Legendary Capital — Itinerary 360</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <header class="navbar" id="mainNavbar"></header>
+    <main class="destination-page" id="destMain"></main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="../pages/index.html" class="logo">Itinerary <em>360</em></a>
+                <p>Your guide to the best of Maharashtra.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Forts</h4>
+                <a href="raigad-fort.html">Raigad Fort</a>
+                <a href="sinhagad-fort.html">Sinhagad Fort</a>
+                <a href="pratapgad-fort.html">Pratapgad Fort</a>
+                <a href="lohagad-fort.html">Lohagad Fort</a>
+            </div>
+            <div class="footer-col"><h4>Explore</h4><a href="../pages/index.html">All Destinations</a><a href="rajmachi.html">Rajmachi</a></div>
+            <div class="footer-col"><h4>Company</h4><a href="../pages/about.html">About Us</a></div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2025 Itinerary 360 — PVPIT Sangli</span>
+            <span>Made with ♥ in Maharashtra</span>
+        </div>
+    </footer>
+
+    <div id="globalToast" class="toast"></div>
+    <script src="../js/wishlist.js"></script>
+    <script src="../js/destination-builder.js"></script>
+    <script>
+        buildDestinationPage({
+            id:       'raigad',
+            name:     'Raigad Fort',
+            sub:      'Raigad District',
+            badge:    'Heritage Fort',
+            tag:      'fort',
+            href:     'raigad-fort.html',
+            img:      '../assets/raigad.jpg',
+            title:    'Raigad Fort: Capital of the Maratha Empire',
+            subtitle: 'The grand capital of Chhatrapati Shivaji Maharaj\'s Maratha Empire — a mountaintop fortress with sweeping views, a ropeway, and profound historical significance.',
+            tags:     ['🏰 Heritage Fort', '⚔️ Maratha History', '🚡 Ropeway', '⛰ Sahyadri', '🛕 Jagdishwar Temple'],
+
+            stats: [
+                { label: 'Elevation',       value: '820 m (2,700 ft)' },
+                { label: 'Historical Role', value: 'Capital of Maratha Empire' },
+                { label: 'Built By',        value: 'Shivaji Maharaj, 1674' },
+                { label: 'Best Season',     value: 'Oct – Mar' },
+            ],
+
+            places: [
+                { name: 'Samadhi of Shivaji Maharaj', icon: '🛕', img: '', desc: 'The sacred memorial of Chhatrapati Shivaji Maharaj — a deeply moving site that draws thousands of devotees annually.' },
+                { name: 'Raj Sabha (Royal Court)',     icon: '👑', img: '', desc: 'Ruins of the grand royal court where Shivaji was coronated in 1674 and held court — the heart of the Maratha Empire.' },
+                { name: 'Jagdishwar Temple',           icon: '🛕', img: '', desc: 'An ancient Shiva temple within the fort complex, still active and well-maintained.' },
+                { name: 'MTDC Ropeway',                icon: '🚡', img: '', desc: 'A modern aerial ropeway offering a scenic ride up to the fort, saving the 1,400-step climb.' },
+                { name: 'Queen\'s Quarters',           icon: '🏯', img: '', desc: 'The ruins of the zenana (ladies\' quarters) with intricate stone carvings and a well-preserved layout.' },
+                { name: 'Granary & Water Cisterns',    icon: '💧', img: '', desc: 'Ancient storage structures that sustained thousands of soldiers — testament to Shivaji\'s brilliant planning.' },
+            ],
+
+            activities: [
+                { icon: '🚡', name: 'Ropeway Ride',           desc: 'Take the MTDC Ropeway for a scenic aerial ascent — views of the Sahyadri and Raigad village below.' },
+                { icon: '🥾', name: 'Staircase Trek',         desc: 'Challenge yourself with the 1,400-step ancient stone staircase — the traditional way up the fort.' },
+                { icon: '🙏', name: 'Pay Respects',           desc: 'Visit the Samadhi of Shivaji Maharaj and Tarabai, a profoundly moving experience for history lovers.' },
+                { icon: '📸', name: 'Photography',            desc: 'Photograph the ruins, panoramic valley views, and the famous "Hirakani Tower" on the fort edge.' },
+                { icon: '📖', name: 'History Tour',           desc: 'Hire a certified guide to walk you through the Raj Sabha, prison, market area, and Hirakani story.' },
+                { icon: '🌄', name: 'Sunrise at the Summit',  desc: 'Stay at MTDC resort at the base and catch the spectacular sunrise over the fort silhouette.' },
+            ],
+
+            sections: [
+                {
+                    icon: '⚔️',
+                    title: 'Historical Significance',
+                    items: [
+                        'Raigad was the capital of Chhatrapati Shivaji Maharaj\'s Maratha Empire from 1674 until his death in 1680.',
+                        'Shivaji\'s coronation ceremony (Rajyabhishek) took place here on 6 June 1674 — a landmark in Indian history.',
+                        'The fort was taken by the Mughals in 1689 after Sambhaji Maharaj\'s capture, but later reclaimed by the Marathas.',
+                        'The British demolished large portions of the fort in 1818 but the Samadhi and key structures survive.',
+                        'The Hirakani story — a milkmaid who climbed down the impossible cliff at night — is one of Maharashtra\'s most beloved folk tales.',
+                    ]
+                },
+                {
+                    icon: '🧭',
+                    title: 'How to Reach',
+                    items: [
+                        'By Road: 170 km from Pune; 225 km from Mumbai via NH66.',
+                        'Nearest town: Mahad (25 km) — base for most travellers.',
+                        'MTDC Ropeway operates from 8:30 AM to 5:30 PM (closed Tuesdays).',
+                        'Helicopter service available from Mahad to the fort on select days.',
+                    ]
+                },
+            ],
+
+            tips: [
+                { icon: '🚡', title: 'Ropeway Info',      content: ['Open 8:30 AM – 5:30 PM', 'Closed on Tuesdays for maintenance', 'Book tickets in advance on weekends', 'Ropeway closed during heavy rain/storms'] },
+                { icon: '💡', title: 'Practical Tips',    content: ['Carry water — limited vendors on fort', 'MTDC resort at base for stay', 'Combine with Matheran or Alibaug for a weekend trip', 'Visit on a weekday to avoid crowds'] },
+            ],
+        });
+    </script>
+</body>
+</html>

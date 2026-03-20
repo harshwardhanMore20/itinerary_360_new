@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — Itinerary 360</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <style>
+        .about-page { max-width: 860px; margin: 56px auto 80px; padding: 0 24px; }
+        .about-hero {
+            background: linear-gradient(135deg, var(--ink) 0%, #2d1a08 100%);
+            border-radius: var(--radius-lg);
+            padding: 56px 48px;
+            color: white;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 60% 60% at 80% 40%, rgba(212,132,26,0.15) 0%, transparent 70%);
+        }
+        .about-hero .eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--amber-light); margin-bottom: 16px; position: relative; z-index: 1; }
+        .about-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 700; line-height: 1.15; margin-bottom: 16px; position: relative; z-index: 1; }
+        .about-hero p { font-size: 1rem; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 580px; position: relative; z-index: 1; }
+        .about-section { background: var(--warm-white); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 36px 40px; margin-bottom: 24px; box-shadow: var(--shadow-sm); }
+        .about-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
+        .about-section p { font-size: 0.92rem; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
+        .about-section p:last-child { margin-bottom: 0; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin-top: 24px; }
+        .team-card { background: var(--cream); border-radius: var(--radius-md); padding: 24px 20px; text-align: center; border: 1px solid var(--border); }
+        .team-avatar { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, var(--amber), var(--amber-light)); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; }
+        .team-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+        .team-card p { font-size: 0.8rem; color: var(--muted); }
+        .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+        .value-card { background: var(--cream); border-radius: var(--radius-md); padding: 20px; border: 1px solid var(--border); }
+        .value-card .value-icon { font-size: 1.6rem; margin-bottom: 10px; }
+        .value-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+        .value-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+        @media (max-width: 600px) { .about-hero { padding: 36px 24px; } .about-section { padding: 24px 20px; } .values-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header class="navbar" id="mainNavbar"></header>
+
+    <main class="about-page">
+
+        <div class="about-hero">
+            <p class="eyebrow">Our Story</p>
+            <h1>Built by travellers,<br>for travellers.</h1>
+            <p>Itinerary 360 is a student project from PVPIT Sangli — a labour of love to help people discover the incredible diversity of Maharashtra's landscapes, history, and culture.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>About Itinerary 360</h2>
+            <p>Itinerary 360 started as a frontend development project at PVPIT (Pravara Institute of Engineering & Technology) Sangli, Maharashtra. We saw that while travel websites existed for big international destinations, very few did justice to the rich tapestry of Maharashtra's own backyard.</p>
+            <p>From the mist-wrapped forts of the Sahyadri to the turquoise waters of the Konkan, from sacred temples to ancient Buddhist caves — Maharashtra is a world unto itself, waiting to be explored. Our goal is to give every traveller a complete 360° picture of what this great state has to offer.</p>
+            <p>This project was built with care, caffeine, and a genuine love for Maharashtra.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🗺</div>
+                    <h4>Honest Travel</h4>
+                    <p>We share accurate, first-hand information — no paid promotions, no inflated reviews. Just honest guidance.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌿</div>
+                    <h4>Responsible Tourism</h4>
+                    <p>We promote eco-sensitive travel, respecting local communities, heritage sites, and natural ecosystems.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🏛</div>
+                    <h4>Cultural Respect</h4>
+                    <p>Maharashtra's history and culture deserve reverence. We present every destination with the depth and respect it deserves.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">♥️</div>
+                    <h4>Built with Passion</h4>
+                    <p>Every page, every destination, every design choice — made by students who love this state and this craft.</p>
+                </div>
+            </div>
+        </div>
+<!-- 
+        <div class="about-section">
+            <h2>The Team</h2>
+            <p>We are a group of Computer Engineering students from PVPIT Sangli who built this as our Frontend Development course project. Every member brought a piece of Maharashtra they love to this site.</p>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">👩‍💻</div>
+                    <h4>Frontend Lead</h4>
+                    <p>Design & HTML/CSS Architecture</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👨‍💻</div>
+                    <h4>JS Developer</h4>
+                    <p>Interactivity & Wishlist System</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">✍️</div>
+                    <h4>Content Writer</h4>
+                    <p>Research & Destination Guides</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">🎨</div>
+                    <h4>UI Designer</h4>
+                    <p>Visual Design & Brand Identity</p>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="about-section">
+            <h2>Contact Us</h2>
+            <p>Have feedback, a destination suggestion, or a correction? We'd love to hear from you.</p>
+            <p>📧 Email: <strong>harshwardhan3170@gmail.com</strong></p>
+            <p>📍 Address: PVPIT, Budhgaon Road, Sangli — 416304, Maharashtra, India</p>
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">Itinerary <em>360</em></a>
+                <p>Your guide to the best of Maharashtra.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Destinations</h4>
+                <a href="../destinations/alibaug.html">Alibaug</a>
+                <a href="../destinations/mahabaleshwar.html">Mahabaleshwar</a>
+                <a href="../destinations/malvan.html">Malvan</a>
+                <a href="../destinations/lonavala.html">Lonavala</a>
+            </div>
+            <div class="footer-col">
+                <h4>Forts</h4>
+                <a href="../destinations/raigad-fort.html">Raigad</a>
+                <a href="../destinations/sinhagad-fort.html">Sinhagad</a>
+                <a href="../destinations/pratapgad-fort.html">Pratapgad</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="about.html">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2025 Itinerary 360 — PVPIT Sangli</span>
+            <span>Made with ♥ in Maharashtra</span>
+        </div>
+    </footer>
+
+    <script src="../js/navbar.js"></script>
+    <script>buildNavbarPages('about');</script>
+</body>
+</html>
