@@ -44,7 +44,7 @@
     <section class="featured-section">
         <div class="section-header">
             <h2>
-                <span>Editor's Pick</span>
+                <span>Our Pick</span>
                 Featured Destinations
             </h2>
             <a href="#all-destinations" class="see-all-link">See All →</a>
@@ -114,7 +114,7 @@
         // ── Destination Data ──────────────────────────────────────────
         const destinations = [
             // Konkan Coast
-            { id: 'alibaug',         name: 'Alibaug',             sub: 'Konkan Coast',     tag: 'beach',    href: '../destinations/alibaug.html',         img: '../assets/alibhag.png',          badge: 'Konkan' },
+            { id: 'alibaug',         name: 'Alibaug',             sub: 'Konkan Coast',     tag: 'beach',    href: '../destinations/alibaug.html',         img: '../assets/alibaug.png',          badge: 'Konkan' },
             { id: 'ganpatipule',     name: 'Ganpatipule',         sub: 'Ratnagiri',        tag: 'spiritual',href: '../destinations/ganpatipule.html',     img: '../assets/ganpatipule.jpg',       badge: 'Spiritual' },
             { id: 'malvan',          name: 'Malvan',              sub: 'Sindhudurg',       tag: 'beach',    href: '../destinations/malvan.html',          img: '../assets/malvan.jpg',            badge: 'Marine' },
             { id: 'ratnagiri',       name: 'Ratnagiri',           sub: 'Konkan Coast',     tag: 'beach',    href: '../destinations/ratnagiri.html',       img: '../assets/ratnagiri.jpg',         badge: 'Konkan' },
@@ -172,10 +172,17 @@
         const featuredGrid = document.getElementById('featuredGrid');
         const allGrid      = document.getElementById('allGrid');
 
-        featuredGrid.innerHTML = destinations.slice(0, 6).map(buildCard).join('');
-        allGrid.innerHTML      = destinations.map(buildCard).join('');
+        // All destinations go into the full grid
+        allGrid.innerHTML = destinations.map(buildCard).join('');
 
-        // Update wishlist button icon on wishlist change
+        // Featured = first 6 from ALL destinations (rendered separately, always visible)
+        // We render them into featuredGrid fresh on each filter call
+        function renderFeatured(filtered) {
+            featuredGrid.innerHTML = filtered.slice(0, 6).map(buildCard).join('');
+        }
+        renderFeatured(destinations);
+
+        // Update wishlist button icons when wishlist changes
         window.addEventListener('wishlistUpdated', () => {
             document.querySelectorAll('[data-wishlist-dest-id]').forEach(btn => {
                 const id = btn.dataset.wishlistDestId;
@@ -202,32 +209,50 @@
         function applyFilter() {
             const query = document.getElementById('searchInput').value.trim().toLowerCase();
 
-            [featuredGrid, allGrid].forEach(grid => {
-                const cards = grid.querySelectorAll('.destination-card');
-                let visibleCount = 0;
-
-                cards.forEach(card => {
-                    const tagMatch  = currentFilter === 'all' || card.dataset.tag === currentFilter;
-                    const nameMatch = !query || card.dataset.name.includes(query);
-                    const show = tagMatch && nameMatch;
-                    card.style.display = show ? '' : 'none';
-                    if (show) visibleCount++;
-                });
-
-                // Show no-results message
-                const noRes = grid.querySelector('.no-results');
-                if (visibleCount === 0) {
-                    if (!noRes) {
-                        grid.insertAdjacentHTML('beforeend', `
-                            <div class="no-results">
-                                <div class="no-results-icon">🔍</div>
-                                <p>No destinations found for "<strong>${query || currentFilter}</strong>"</p>
-                            </div>`);
-                    }
-                } else {
-                    if (noRes) noRes.remove();
-                }
+            // 1. Filter the master destinations array by tag + search text
+            const filtered = destinations.filter(d => {
+                const tagMatch  = currentFilter === 'all' || d.tag === currentFilter;
+                const nameMatch = !query || d.name.toLowerCase().includes(query) || d.sub.toLowerCase().includes(query);
+                return tagMatch && nameMatch;
             });
+
+            // 2. Re-render featured grid with top 6 of the filtered results
+            if (filtered.length > 0) {
+                featuredGrid.innerHTML = filtered.slice(0, 6).map(buildCard).join('');
+            } else {
+                const label = query || (currentFilter !== 'all' ? currentFilter : '');
+                featuredGrid.innerHTML = `
+                    <div class="no-results" style="grid-column:1/-1">
+                        <div class="no-results-icon">🔍</div>
+                        <p>No destinations found for "<strong>${label}</strong>"</p>
+                    </div>`;
+            }
+
+            // 3. Show/hide cards in the All Destinations grid
+            const allCards = allGrid.querySelectorAll('.destination-card');
+            let allVisible = 0;
+            allCards.forEach(card => {
+                const tagMatch  = currentFilter === 'all' || card.dataset.tag === currentFilter;
+                const nameMatch = !query || card.dataset.name.includes(query);
+                const show = tagMatch && nameMatch;
+                card.style.display = show ? '' : 'none';
+                if (show) allVisible++;
+            });
+
+            // 4. No-results for the All grid
+            const noRes = allGrid.querySelector('.no-results');
+            if (allVisible === 0) {
+                if (!noRes) {
+                    const label = query || (currentFilter !== 'all' ? currentFilter : '');
+                    allGrid.insertAdjacentHTML('beforeend', `
+                        <div class="no-results" style="grid-column:1/-1">
+                            <div class="no-results-icon">🔍</div>
+                            <p>No destinations found for "<strong>${label}</strong>"</p>
+                        </div>`);
+                }
+            } else {
+                if (noRes) noRes.remove();
+            }
         }
 
         // Called from footer links
