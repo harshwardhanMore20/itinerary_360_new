@@ -41,7 +41,10 @@ function buildDestinationPage(data) {
                 <a href="../pages/about.html">About Us</a>
                 <a href="../pages/profile.html">Profile</a>
             </nav>
-            <a href="../pages/login.html"><button class="login-btn">Login</button></a>
+            <div style="display:flex;align-items:center;gap:10px;">
+                <button class="dark-toggle" id="darkToggleBtn" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">🌙</button>
+                <a href="../pages/login.html"><button class="login-btn">Login</button></a>
+            </div>
         `;
     }
 

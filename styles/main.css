@@ -6,7 +6,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap');
 
-/* ── DESIGN TOKENS ── */
+/* ── DESIGN TOKENS — LIGHT MODE ── */
 :root {
     --cream:           #faf6f0;
     --warm-white:      #ffffff;
@@ -31,6 +31,76 @@
     --shadow-hover:    0 20px 60px rgba(26, 17, 8, 0.18);
     --transition:      0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --navbar-height:   76px;
+}
+
+/* ── DESIGN TOKENS — DARK MODE ── */
+body.dark {
+    --cream:        #141210;
+    --warm-white:   #1e1a16;
+    --ink:          #f0e8dc;
+    --muted:        #a89880;
+    --border:       #2e2820;
+    --border-hover: #d4a96a;
+    --amber-glow:   rgba(212, 132, 26, 0.18);
+    --card-bg:      #1e1a16;
+    --shadow-sm:    0 2px 8px rgba(0,0,0,0.3);
+    --shadow-md:    0 8px 24px rgba(0,0,0,0.4);
+    --shadow-lg:    0 16px 48px rgba(0,0,0,0.5);
+    --shadow-hover: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* Dark mode overrides for components that use hard-coded colours */
+body.dark .navbar                { background: rgba(20,18,16,0.96); }
+body.dark .dropdown-content      { background: #252018; border-color: var(--border); }
+body.dark .filter-tag            { background: #1e1a16; }
+body.dark .destination-card      { background: #1e1a16; }
+body.dark .detail-section,
+body.dark .stat-card,
+body.dark .tip-card,
+body.dark .activity-card,
+body.dark .place-card            { background: #1e1a16; }
+body.dark .wishlist-btn,
+body.dark .place-wishlist-btn    { background: rgba(30,26,22,0.92); }
+body.dark .hero-section          { background: linear-gradient(180deg,#1a1510 0%,#141210 100%); }
+body.dark .search-bar            { background: #1e1a16; border-color: var(--border); }
+body.dark .search-bar input      { color: var(--ink); background: transparent; }
+body.dark .profile-section,
+body.dark .profile-page-header,
+body.dark .wishlist-dest-card,
+body.dark .wishlist-act-item     { background: #1e1a16; }
+body.dark .profile-tabs          { background: #1e1a16; }
+body.dark .value-card,
+body.dark .team-card,
+body.dark .about-section         { background: #1e1a16; }
+body.dark .login-card            { background: #1e1a16; }
+body.dark .field input           { background: #141210; color: var(--ink); }
+
+/* Smooth transition when toggling */
+body, body *, body *::before, body *::after {
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.2s ease;
+}
+
+/* ── Dark Mode Toggle Button ── */
+.dark-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+}
+.dark-toggle:hover {
+    background: var(--amber-glow);
+    border-color: var(--amber);
+    color: var(--amber);
+    transform: rotate(20deg);
 }
 
 /* ── RESET ── */

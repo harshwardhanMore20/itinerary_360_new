@@ -43,7 +43,10 @@ function buildNavbar(activePage = '') {
             <a href="../pages/about.html" class="${activePage === 'about' ? 'active' : ''}">About Us</a>
             <a href="../pages/profile.html" class="${activePage === 'profile' ? 'active' : ''}">Profile</a>
         </nav>
-        <a href="../pages/login.html"><button class="login-btn">Login</button></a>
+        <div style="display:flex;align-items:center;gap:10px;">
+            <button class="dark-toggle" id="darkToggleBtn" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">🌙</button>
+            <a href="../pages/login.html"><button class="login-btn">Login</button></a>
+        </div>
     `;
 }
 
@@ -87,6 +90,9 @@ function buildNavbarPages(activePage = '') {
             <a href="about.html" class="${activePage === 'about' ? 'active' : ''}">About Us</a>
             <a href="profile.html" class="${activePage === 'profile' ? 'active' : ''}">Profile</a>
         </nav>
-        <a href="login.html"><button class="login-btn">Login</button></a>
+        <div style="display:flex;align-items:center;gap:10px;">
+            <button class="dark-toggle" id="darkToggleBtn" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">🌙</button>
+            <a href="login.html"><button class="login-btn">Login</button></a>
+        </div>
     `;
 }
