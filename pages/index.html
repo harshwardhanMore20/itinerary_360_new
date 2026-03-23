@@ -113,27 +113,27 @@
         buildNavbarPages('home');
 
         // ── Destination Data ──────────────────────────────────────────
-        const destinations = [
+        const destinations = [  
             // Konkan Coast
             { id: 'alibaug',         name: 'Alibaug',             sub: 'Konkan Coast',     tag: 'beach',    href: '../destinations/alibaug.html',         img: '../assets/alibaug.png',          badge: 'Konkan' },
-            { id: 'ganpatipule',     name: 'Ganpatipule',         sub: 'Ratnagiri',        tag: 'spiritual',href: '../destinations/ganpatipule.html',     img: '../assets/ganpatipule.jpg',       badge: 'Spiritual' },
-            { id: 'malvan',          name: 'Malvan',              sub: 'Sindhudurg',       tag: 'beach',    href: '../destinations/malvan.html',          img: '../assets/malvan.jpg',            badge: 'Marine' },
-            { id: 'ratnagiri',       name: 'Ratnagiri',           sub: 'Konkan Coast',     tag: 'beach',    href: '../destinations/ratnagiri.html',       img: '../assets/ratnagiri.jpg',         badge: 'Konkan' },
-            { id: 'dapoli',          name: 'Dapoli',              sub: 'Ratnagiri',        tag: 'beach',    href: '../destinations/dapoli.html',          img: '../assets/dapoli.jpg',            badge: 'Konkan' },
-            { id: 'harihareshwar',   name: 'Harihareshwar',       sub: 'Raigad',           tag: 'spiritual',href: '../destinations/harihareshwar.html',   img: '../assets/harihareshwar.jpg',     badge: 'Spiritual' },
+            { id: 'ganpatipule',     name: 'Ganpatipule',         sub: 'Ratnagiri',        tag: 'spiritual',href: '../destinations/ganpatipule.html',     img: '../assets/Ganpatipule.png',       badge: 'Spiritual' },
+            { id: 'malvan',          name: 'Malvan',              sub: 'Sindhudurg',       tag: 'beach',    href: '../destinations/malvan.html',          img: '../assets/Malvan.png',            badge: 'Marine' },
+            { id: 'ratnagiri',       name: 'Ratnagiri',           sub: 'Konkan Coast',     tag: 'beach',    href: '../destinations/ratnagiri.html',       img: '../assets/Ratnagiri.png',         badge: 'Konkan' },
+            { id: 'dapoli',          name: 'Dapoli',              sub: 'Ratnagiri',        tag: 'beach',    href: '../destinations/dapoli.html',          img: '../assets/Dapoli.png',            badge: 'Konkan' },
+            { id: 'harihareshwar',   name: 'Harihareshwar',       sub: 'Raigad',           tag: 'spiritual',href: '../destinations/harihareshwar.html',   img: '../assets/Harihareshwar.png',     badge: 'Spiritual' },
             // Western Ghats
-            { id: 'malshej',         name: 'Malshej Ghat',        sub: 'Western Ghats',    tag: 'hill',     href: '../destinations/malshej-ghat.html',    img: '../assets/hill_station.png',     badge: 'Hill Station' },
-            { id: 'mahabaleshwar',   name: 'Mahabaleshwar',       sub: 'Satara District',  tag: 'hill',     href: '../destinations/mahabaleshwar.html',   img: '../assets/mahabaleshwar.jpg',     badge: 'Hill Station' },
-            { id: 'lonavala',        name: 'Lonavala & Khandala', sub: 'Pune Division',    tag: 'hill',     href: '../destinations/lonavala.html',        img: '../assets/lonavala.jpg',          badge: 'Hill Station' },
-            { id: 'matheran',        name: 'Matheran',            sub: 'Raigad District',  tag: 'hill',     href: '../destinations/matheran.html',        img: '../assets/matheran.jpg',          badge: 'Eco Resort' },
-            { id: 'rajmachi',        name: 'Rajmachi',            sub: 'Sahyadri Range',   tag: 'fort',     href: '../destinations/rajmachi.html',        img: '../assets/rajmachi.jpg',          badge: 'Fort Trek' },
+            { id: 'malshej',         name: 'Malshej Ghat',        sub: 'Western Ghats',    tag: 'hill',     href: '../destinations/malshej-ghat.html',    img: '../assets/Malshej Ghat.png',     badge: 'Hill Station' },
+            { id: 'mahabaleshwar',   name: 'Mahabaleshwar',       sub: 'Satara District',  tag: 'hill',     href: '../destinations/mahabaleshwar.html',   img: '../assets/Mahabaleshwar.png',     badge: 'Hill Station' },
+            { id: 'lonavala',        name: 'Lonavala & Khandala', sub: 'Pune Division',    tag: 'hill',     href: '../destinations/lonavala.html',        img: '../assets/Lonavala.png',          badge: 'Hill Station' },
+            { id: 'matheran',        name: 'Matheran',            sub: 'Raigad District',  tag: 'hill',     href: '../destinations/matheran.html',        img: '../assets/Matheran.png',          badge: 'Eco Resort' },
+            { id: 'rajmachi',        name: 'Rajmachi',            sub: 'Sahyadri Range',   tag: 'fort',     href: '../destinations/rajmachi.html',        img: '../assets/rajmachi.png',          badge: 'Fort Trek' },
             // Forts
-            { id: 'raigad',          name: 'Raigad Fort',         sub: 'Raigad District',  tag: 'fort',     href: '../destinations/raigad-fort.html',     img: '../assets/raigad.jpg',            badge: 'Heritage Fort' },
-            { id: 'sinhagad',        name: 'Sinhagad Fort',       sub: 'Pune',             tag: 'fort',     href: '../destinations/sinhagad-fort.html',   img: '../assets/sinhagad.jpg',          badge: 'Heritage Fort' },
-            { id: 'pratapgad',       name: 'Pratapgad Fort',      sub: 'Satara',           tag: 'fort',     href: '../destinations/pratapgad-fort.html',  img: '../assets/pratapgad.jpg',         badge: 'Maratha Fort' },
-            { id: 'lohagad',         name: 'Lohagad Fort',        sub: 'Pune District',    tag: 'fort',     href: '../destinations/lohagad-fort.html',    img: '../assets/lohagad.jpg',           badge: 'Trek Fort' },
+            { id: 'raigad',          name: 'Raigad Fort',         sub: 'Raigad District',  tag: 'fort',     href: '../destinations/raigad-fort.html',     img: '../assets/Raigad Fort.png',            badge: 'Heritage Fort' },
+            { id: 'sinhagad',        name: 'Sinhagad Fort',       sub: 'Pune',             tag: 'fort',     href: '../destinations/sinhagad-fort.html',   img: '../assets/Sinhagad Fort.png',          badge: 'Heritage Fort' },
+            { id: 'pratapgad',       name: 'Pratapgad Fort',      sub: 'Satara',           tag: 'fort',     href: '../destinations/pratapgad-fort.html',  img: '../assets/Pratapgad Fort.png',         badge: 'Maratha Fort' },
+            { id: 'lohagad',         name: 'Lohagad Fort',        sub: 'Pune District',    tag: 'fort',     href: '../destinations/lohagad-fort.html',    img: '../assets/Lohagad Fort.png',           badge: 'Trek Fort' },
             // Spiritual
-            { id: 'siddhivinayak',   name: 'Siddhivinayak Temple',sub: 'Mumbai',           tag: 'spiritual',href: '../destinations/siddhivinayak.html',  img: '../assets/temple.png',            badge: 'Spiritual' },
+            { id: 'siddhivinayak',   name: 'Siddhivinayak Temple',sub: 'Mumbai',           tag: 'spiritual',href: '../destinations/siddhivinayak.html',  img: '../assets/Siddhivinayak.png',            badge: 'Spiritual' },
         ];
 
         // ── Build card HTML ──────────────────────────────────────────

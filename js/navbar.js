@@ -1,9 +1,3 @@
-/**
- * navbar.js — Inject shared navbar HTML into all pages
- * Just call buildNavbar('active-page-id') in each page
- * active-page-id: 'home' | 'popular' | 'about' | 'profile'
- */
-
 function buildNavbar(activePage = '') {
     const nav = document.getElementById('mainNavbar');
     if (!nav) return;

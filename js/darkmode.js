@@ -31,7 +31,7 @@
 
     function updateIcon(btn) {
         const isDark = document.body.classList.contains('dark');
-        btn.textContent = isDark ? '☀️' : '🌙';
+        btn.textContent = isDark ? '🌙' : '☀️';
         btn.title       = isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
         btn.setAttribute('aria-label', isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
     }
