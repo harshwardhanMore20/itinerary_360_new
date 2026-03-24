@@ -35,7 +35,7 @@
                 <h2>My Account</h2>
                 <div class="profile-field">
                     <span class="field-label">Username</span>
-                    <span class="field-value" id="fieldUsername">—</span>
+                    <span class="field-value" id="fieldUsername">+</span>
                     <button class="edit-btn" onclick="editField('username')">Edit</button>
                 </div>
                 <div class="profile-field">
@@ -254,7 +254,6 @@
             const val = prompt(`Enter new ${field}:`, el.textContent === '—' ? '' : el.textContent);
             if (val !== null && val.trim()) {
                 el.textContent = val.trim();
-                localStorage.setItem(`i360_profile_${field}`, val.trim());
             }
         }
 

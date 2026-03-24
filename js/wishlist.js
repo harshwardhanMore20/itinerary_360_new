@@ -143,7 +143,7 @@ const Wishlist = (() => {
             const added = toggleDestination({ id, name, sub, badge, href, img, tag });
             syncWishlistButtons();
             showToast(
-                added ? `❤️ "${name}" added to Wishlist` : `💔 "${name}" removed from Wishlist`,
+                added ? `❤️ "${name}" added to Wishlist` : ` "${name}" removed from Wishlist`,
                 added ? 'add' : 'remove'
             );
         });
@@ -162,7 +162,7 @@ const Wishlist = (() => {
             const added = toggleActivity({ id, name, icon, location, desc });
             syncWishlistButtons();
             showToast(
-                added ? `❤️ "${name}" added to Wishlist` : `💔 "${name}" removed from Wishlist`,
+                added ? `❤️ "${name}" added to Wishlist` : ` "${name}" removed from Wishlist`,
                 added ? 'add' : 'remove'
             );
         });

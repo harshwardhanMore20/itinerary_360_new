@@ -397,7 +397,7 @@ button { font-family: 'Outfit', sans-serif; }
 /* ── Wishlist Button on Cards ── */
 .wishlist-btn {
     position: absolute;
-    top: 12px;
+    top: 8px;
     right: 12px;
     width: 36px;
     height: 36px;
@@ -437,16 +437,18 @@ button { font-family: 'Outfit', sans-serif; }
 .dest-wishlist-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8000px;
+    gap: 8px;
     background: transparent;
-    border: 2px solid var(--amber);
+    border: 1.5px solid var(--amber);
     color: var(--amber);
-    padding: 10px 22px;
+    padding: 8px 16px;
     border-radius: 100px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
     transition: all var(--transition);
+    height: 37px;        /* ← forces same height as .back-btn */
+    box-sizing: border-box;
 }
 
 .dest-wishlist-btn:hover,
@@ -536,6 +538,8 @@ button { font-family: 'Outfit', sans-serif; }
     background: var(--amber-glow);
     margin-bottom: 32px;
     transition: all var(--transition);
+    height: 37px;        /* ← add this */
+    box-sizing: border-box;
 }
 
 .back-btn:hover { background: var(--amber); color: white; }
