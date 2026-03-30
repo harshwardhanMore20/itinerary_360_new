@@ -13,7 +13,7 @@
     --ink:             #1a1108;
     --muted:           #7c6e5e;
     --border:          #ede5d8;
-    --border-hover:    #d4a96a;
+    --border-hover:    #d47a6a;
     --amber:           #d4841a;
     --amber-light:     #f0a93a;
     --amber-glow:      rgba(212, 132, 26, 0.12);
@@ -40,7 +40,7 @@ body.dark {
     --ink:          #f0e8dc;
     --muted:        #a89880;
     --border:       #2e2820;
-    --border-hover: #d4a96a;
+    --border-hover: #fc5c27;
     --amber-glow:   rgba(212, 132, 26, 0.18);
     --card-bg:      #1e1a16;
     --shadow-sm:    0 2px 8px rgba(0,0,0,0.3);
@@ -59,7 +59,7 @@ body.dark .stat-card,
 body.dark .tip-card,
 body.dark .activity-card,
 body.dark .place-card            { background: #1e1a16; }
-body.dark .wishlist-btn,
+body.dark .wishlist-btn,         
 body.dark .place-wishlist-btn    { background: rgba(30,26,22,0.92); }
 body.dark .hero-section          { background: linear-gradient(180deg,#1a1510 0%,#141210 100%); }
 body.dark .search-bar            { background: #1e1a16; border-color: var(--border); }
