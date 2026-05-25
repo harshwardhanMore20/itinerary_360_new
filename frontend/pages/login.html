@@ -85,10 +85,12 @@
         <a href="#">Terms</a>
     </footer>
 
+    <script src="../js/auth.js"></script>
     <script src="../js/darkmode.js"></script>
     <script>
         const pwInput = document.getElementById('password');
         const toggle  = document.getElementById('togglePw');
+        const errorEl = document.getElementById('errorMsg');
 
         toggle.addEventListener('click', toggleVisibility);
         toggle.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') toggleVisibility(); });
@@ -99,26 +101,34 @@
             toggle.textContent = hidden ? 'Hide' : 'Show';
         }
 
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const email = document.getElementById('email').value.trim();
-            const pw    = document.getElementById('password').value;
-            const errEl = document.getElementById('errorMsg');
+        function showError(message) {
+            errorEl.textContent = message;
+            errorEl.classList.add('show');
+        }
 
-            if (!email || !pw) {
-                errEl.textContent = 'Please fill in both email and password.';
-                errEl.classList.add('show');
+        function clearError() {
+            errorEl.textContent = '';
+            errorEl.classList.remove('show');
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const identifier = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+
+            if (!identifier || !password) {
+                showError('Please fill in both email and password.');
                 return;
             }
 
-            errEl.classList.remove('show');
-            // Store email for profile
-            // localStorage.setItem('i360_profile_email', email);
-            // const name = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, ' ');
-            // localStorage.setItem('i360_profile_username', name.charAt(0).toUpperCase() + name.slice(1));
+            clearError();
 
-            // Redirect to profile
-           // window.location.href = 'profile.html';
+            try {
+                await Auth.login(identifier, password);
+                window.location.href = 'index.html';
+            } catch (err) {
+                showError(err.message || 'Login failed. Please check your credentials.');
+            }
         });
     </script>
 

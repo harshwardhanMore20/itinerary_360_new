@@ -34,6 +34,11 @@
             <div class="profile-section">
                 <h2>My Account</h2>
                 <div class="profile-field">
+                    <span class="field-label">Full Name</span>
+                    <span class="field-value" id="fieldFullName">—</span>
+                    <button class="edit-btn" onclick="editField('fullName')">Edit</button>
+                </div>
+                <div class="profile-field">
                     <span class="field-label">Username</span>
                     <span class="field-value" id="fieldUsername">+</span>
                     <button class="edit-btn" onclick="editField('username')">Edit</button>
@@ -44,14 +49,19 @@
                     <button class="edit-btn" onclick="editField('email')">Edit</button>
                 </div>
                 <div class="profile-field">
+                    <span class="field-label">Phone</span>
+                    <span class="field-value" id="fieldPhoneNumber">—</span>
+                    <button class="edit-btn" onclick="editField('phoneNumber')">Edit</button>
+                </div>
+                <div class="profile-field">
                     <span class="field-label">Password</span>
-                    <span class="field-value" id ="Password">••••••••</span>
-                    <button class="edit-btn" onclick="editField('Password')">Change</button>
+                    <span class="field-value" id="fieldPassword">••••••••</span>
+                    <button class="edit-btn" onclick="editField('password')">Change</button>
                 </div>
                 <div class="profile-field">
                     <span class="field-label">Location</span>
-                    <span class="field-value" id="location">Maharashtra, India</span>
-                    <button class="edit-btn" onclick="editField('email')">Change</button>
+                    <span class="field-value" id="fieldLocation">Maharashtra, India</span>
+                    <button class="edit-btn" onclick="editField('location')">Change</button>
                 </div>
             </div>
 
@@ -129,6 +139,7 @@
     <div id="globalToast" class="toast" role="alert" aria-live="polite"></div>
 
     <script src="../js/navbar.js"></script>
+    <script src="../js/auth.js"></script>
     <script src="../js/darkmode.js"></script>
     <script src="../js/wishlist.js"></script>
     <script>
@@ -257,16 +268,34 @@
             }
         }
 
-        // ── Init ──────────────────────────────────────────────────────
-        function init() {
-            // Load saved profile fields
-            ['username', 'email'].forEach(f => {
-                const saved = localStorage.getItem(`i360_profile_${f}`);
-                const el = document.getElementById(`field${f.charAt(0).toUpperCase() + f.slice(1)}`);
-                if (saved && el) el.textContent = saved;
-            });
+        async function loadProfile() {
+            Auth.requireAuth('login.html');
 
+            try {
+                const user = await Auth.getProfile();
+
+                document.getElementById('fieldFullName').textContent = user.full_name || '—';
+                document.getElementById('fieldUsername').textContent = user.username || '—';
+                document.getElementById('fieldEmail').textContent = user.email || '—';
+                document.getElementById('fieldPhoneNumber').textContent = user.phone_number || '—';
+                document.getElementById('fieldLocation').textContent = user.location || '—';
+                document.getElementById('fieldPassword').textContent = '••••••••';
+
+                updateCount();
+            } catch (err) {
+                console.error('Unable to load profile:', err);
+                window.location.href = 'login.html';
+            }
+        }
+
+        function init() {
+            Auth.updateNavbarAuthState();
             updateCount();
+
+            document.querySelector('.logout-btn').addEventListener('click', async () => {
+                await Auth.logout();
+                window.location.href = 'login.html';
+            });
 
             // Re-render on wishlist update
             window.addEventListener('wishlistUpdated', () => {
@@ -274,6 +303,8 @@
                 if (panel.classList.contains('active')) renderWishlist();
                 updateCount();
             });
+
+            loadProfile();
         }
 
         init();
