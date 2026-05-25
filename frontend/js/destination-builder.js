@@ -46,6 +46,9 @@ function buildDestinationPage(data) {
                 <a href="../pages/login.html"><button class="login-btn">Login</button></a>
             </div>
         `;
+        if (typeof Auth !== 'undefined' && Auth.updateNavbarAuthState) {
+            Auth.updateNavbarAuthState();
+        }
     }
 
     // ── Wishlist button state ─────────────────────────────────

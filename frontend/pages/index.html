@@ -106,11 +106,13 @@
     <div id="globalToast" class="toast" role="alert" aria-live="polite"></div>
 
     <script src="../js/navbar.js"></script>
+    <script src="../js/auth.js"></script>
     <script src="../js/darkmode.js"></script>
     <script src="../js/wishlist.js"></script>
     <script>
         // ── Build navbar
         buildNavbarPages('home');
+        if (window.Auth && Auth.updateNavbarAuthState) Auth.updateNavbarAuthState();
 
         // ── Destination Data ──────────────────────────────────────────
         const destinations = [  

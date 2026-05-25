@@ -105,6 +105,14 @@ const Wishlist = (() => {
         toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
     }
 
+    function requireLoginForWishlist() {
+        if (typeof Auth !== 'undefined' && !Auth.isLoggedIn()) {
+            showToast('Please log in first to save wishlist items.', 'warning');
+            return false;
+        }
+        return true;
+    }
+
     // ── Button state management ──────────────────────────────
     function syncWishlistButtons() {
         // Destination buttons
@@ -140,6 +148,8 @@ const Wishlist = (() => {
             const href  = btn.dataset.wishlistDestHref  || '#';
             const img   = btn.dataset.wishlistDestImg   || '';
             const tag   = btn.dataset.wishlistDestTag   || '';
+            const isAdd = !hasDestination(id);
+            if (isAdd && !requireLoginForWishlist()) return;
             const added = toggleDestination({ id, name, sub, badge, href, img, tag });
             syncWishlistButtons();
             showToast(
@@ -159,6 +169,8 @@ const Wishlist = (() => {
             const icon     = btn.dataset.wishlistActIcon     || '📌';
             const location = btn.dataset.wishlistActLocation || '';
             const desc     = btn.dataset.wishlistActDesc     || '';
+            const isAdd = !hasActivity(id);
+            if (isAdd && !requireLoginForWishlist()) return;
             const added = toggleActivity({ id, name, icon, location, desc });
             syncWishlistButtons();
             showToast(
