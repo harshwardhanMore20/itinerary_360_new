@@ -8,7 +8,7 @@
  *   <script src="../js/auth.js"></script>
  *
  * API reference:
- *   Auth.signup(username, email, password, location?)  → Promise<AuthResponse>
+ *   Auth.signup({ username, full_name, email, password, location?, phone_number? }) → Promise<AuthResponse>
  *   Auth.login(identifier, password)                   → Promise<AuthResponse>
  *   Auth.logout()                                      → Promise<void>
  *   Auth.getProfile()                                  → Promise<UserResponse>
@@ -88,10 +88,10 @@ const Auth = (() => {
 
     // ── Auth API ─────────────────────────────────────────────────────────────
 
-    async function signup(username, email, password, location = null) {
+    async function signup({ username, full_name, email, password, location = null, phone_number = null }) {
         const data = await request('/auth/signup', {
             method: 'POST',
-            body: JSON.stringify({ username, email, password, location }),
+            body: JSON.stringify({ username, full_name, email, password, location, phone_number }),
         });
         saveSession(data.token.access_token, data.user);
         return data;

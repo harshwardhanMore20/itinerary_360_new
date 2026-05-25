@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up – Itinerary 360</title>
+    <link rel="stylesheet" href="../styles/login.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">Itinerary <em>360</em></a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+        </nav>
+        <button class="dark-toggle" id="darkToggleBtn" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">🌙</button>
+    </header>
+
+    <main class="login-main">
+        <div class="login-card">
+            <p class="card-eyebrow">Start your journey</p>
+            <h1 class="card-title">Create your<br>Itinerary 360 account</h1>
+            <p class="card-sub">Already have an account? <a href="login.html">Log in →</a></p>
+
+            <div class="error-msg" id="errorMsg" role="alert"></div>
+
+            <form id="signupForm" novalidate>
+                <div class="field">
+                    <label for="fullName">Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+                </div>
+
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="travelbuddy" required>
+                </div>
+
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                    <span class="toggle-pw" id="togglePw" role="button" tabindex="0">Show</span>
+                </div>
+
+                <div class="field">
+                    <label for="confirmPassword">Re-type Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required>
+                    <span class="toggle-pw" id="toggleConfirmPw" role="button" tabindex="0">Show</span>
+                </div>
+
+                <div class="field">
+                    <label for="phoneNumber">Phone number <span class="optional-tag">Optional</span></label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="+91 98765 43210">
+                </div>
+
+                <div class="field">
+                    <label for="location">Location <span class="optional-tag">Optional</span></label>
+                    <input type="text" id="location" name="location" placeholder="Mumbai, Maharashtra">
+                </div>
+
+                <button type="submit" class="btn-login">
+                    Sign Up <span class="arrow">→</span>
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="login-footer">
+        &copy; 2026 Itinerary 360 &nbsp;&middot;&nbsp;
+        <a href="about.html">About</a> &nbsp;&middot;&nbsp;
+        <a href="#">Privacy</a> &nbsp;&middot;&nbsp;
+        <a href="#">Terms</a>
+    </footer>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/darkmode.js"></script>
+    <script>
+        const form = document.getElementById('signupForm');
+        const errorEl = document.getElementById('errorMsg');
+        const passwordInput = document.getElementById('password');
+        const confirmInput = document.getElementById('confirmPassword');
+        const togglePw = document.getElementById('togglePw');
+        const toggleConfirmPw = document.getElementById('toggleConfirmPw');
+
+        togglePw.addEventListener('click', () => toggleVisibility(passwordInput, togglePw));
+        toggleConfirmPw.addEventListener('click', () => toggleVisibility(confirmInput, toggleConfirmPw));
+        togglePw.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') toggleVisibility(passwordInput, togglePw); });
+        toggleConfirmPw.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') toggleVisibility(confirmInput, toggleConfirmPw); });
+
+        function toggleVisibility(input, button) {
+            const hidden = input.type === 'password';
+            input.type = hidden ? 'text' : 'password';
+            button.textContent = hidden ? 'Hide' : 'Show';
+        }
+
+        function showError(message) {
+            errorEl.textContent = message;
+            errorEl.classList.add('show');
+        }
+
+        function clearError() {
+            errorEl.textContent = '';
+            errorEl.classList.remove('show');
+        }
+
+        function validatePassword(password) {
+            const hasUpper = /[A-Z]/.test(password);
+            const hasNumber = /\d/.test(password);
+            const hasSymbol = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password);
+            return hasUpper && hasNumber && hasSymbol;
+        }
+
+        function validateEmail(value) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        }
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            clearError();
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = passwordInput.value;
+            const confirmPassword = confirmInput.value;
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            const location = document.getElementById('location').value.trim();
+
+            if (!fullName || !username || !email || !password || !confirmPassword) {
+                showError('Please fill in all required fields.');
+                return;
+            }
+            if (!validateEmail(email)) {
+                showError('Please enter a valid email address.');
+                return;
+            }
+            if (!validatePassword(password)) {
+                showError('Password must include at least one uppercase letter, one number, and one symbol.');
+                return;
+            }
+            if (password !== confirmPassword) {
+                showError('Passwords do not match.');
+                return;
+            }
+
+            try {
+                await Auth.signup({
+                    full_name: fullName,
+                    username,
+                    email,
+                    password,
+                    phone_number: phoneNumber || null,
+                    location: location || null,
+                });
+                window.location.href = 'profile.html';
+            } catch (err) {
+                showError(err.message || 'Unable to create account. Try again.');
+            }
+        });
+    </script>
+</body>
+</html>

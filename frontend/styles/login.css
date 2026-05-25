@@ -166,13 +166,28 @@ a { text-decoration: none; color: inherit; }
 }
 
 .field label {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
     font-size: 0.82rem;
     font-weight: 600;
     color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 8px;
+}
+
+.optional-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: rgba(212, 132, 26, 0.10);
+    color: var(--amber-dark);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: none;
 }
 
 .field input {

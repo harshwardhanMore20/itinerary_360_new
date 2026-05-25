@@ -17,10 +17,22 @@ PASSWORD_MIN_LENGTH = 8
 # ── Signup ────────────────────────────────────────────────────────────────────
 
 class UserSignup(BaseModel):
+    full_name: str
     username: str
     email: EmailStr
     password: str
+    phone_number: Optional[str] = None
     location: Optional[str] = None
+
+    @field_validator("full_name")
+    @classmethod
+    def validate_full_name(cls, v: str) -> str:
+        v = v.strip()
+        if not v or len(v) < 2:
+            raise ValueError("Name must be at least 2 characters.")
+        if len(v) > 255:
+            raise ValueError("Name must be under 255 characters.")
+        return v
 
     @field_validator("username")
     @classmethod
@@ -38,10 +50,24 @@ class UserSignup(BaseModel):
     def validate_password(cls, v: str) -> str:
         if len(v) < PASSWORD_MIN_LENGTH:
             raise ValueError(f"Password must be at least {PASSWORD_MIN_LENGTH} characters.")
-        if not re.search(r"[A-Za-z]", v):
-            raise ValueError("Password must contain at least one letter.")
+        if not re.search(r"[A-Z]", v):
+            raise ValueError("Password must contain at least one uppercase letter.")
         if not re.search(r"\d", v):
             raise ValueError("Password must contain at least one digit.")
+        if not re.search(r"[!@#$%^&*()_+\-=[\]{};':\"\\|,.<>/?]", v):
+            raise ValueError("Password must contain at least one symbol.")
+        return v
+
+    @field_validator("phone_number")
+    @classmethod
+    def validate_phone_number(cls, v: Optional[str]) -> Optional[str]:
+        if v is None:
+            return None
+        v = v.strip()
+        if not v:
+            return None
+        if len(v) > 30:
+            raise ValueError("Phone number must be under 30 characters.")
         return v
 
     @field_validator("location")
@@ -74,10 +100,21 @@ class UserLogin(BaseModel):
 # ── Profile update ────────────────────────────────────────────────────────────
 
 class UserUpdate(BaseModel):
-    username:  Optional[str] = None
-    email:     Optional[EmailStr] = None
-    location:  Optional[str] = None
-    password:  Optional[str] = None
+    full_name:  Optional[str] = None
+    username:   Optional[str] = None
+    email:      Optional[EmailStr] = None
+    phone_number: Optional[str] = None
+    location:   Optional[str] = None
+    password:   Optional[str] = None
+
+    @field_validator("full_name")
+    @classmethod
+    def validate_full_name(cls, v: Optional[str]) -> Optional[str]:
+        if v is not None:
+            v = v.strip()
+            if v and len(v) < 2:
+                raise ValueError("Name must be at least 2 characters.")
+        return v
 
     @field_validator("username")
     @classmethod
@@ -88,11 +125,30 @@ class UserUpdate(BaseModel):
                 raise ValueError("Invalid username format.")
         return v
 
+    @field_validator("phone_number")
+    @classmethod
+    def validate_phone_number(cls, v: Optional[str]) -> Optional[str]:
+        if v is None:
+            return None
+        v = v.strip()
+        if not v:
+            return None
+        if len(v) > 30:
+            raise ValueError("Phone number must be under 30 characters.")
+        return v
+
     @field_validator("password")
     @classmethod
     def validate_password(cls, v: Optional[str]) -> Optional[str]:
-        if v is not None and len(v) < PASSWORD_MIN_LENGTH:
-            raise ValueError(f"Password must be at least {PASSWORD_MIN_LENGTH} characters.")
+        if v is not None:
+            if len(v) < PASSWORD_MIN_LENGTH:
+                raise ValueError(f"Password must be at least {PASSWORD_MIN_LENGTH} characters.")
+            if not re.search(r"[A-Z]", v):
+                raise ValueError("Password must contain at least one uppercase letter.")
+            if not re.search(r"\d", v):
+                raise ValueError("Password must contain at least one digit.")
+            if not re.search(r"[!@#$%^&*()_+\-=[\]{};':\"\\|,.<>/?]", v):
+                raise ValueError("Password must contain at least one symbol.")
         return v
 
 
@@ -102,13 +158,15 @@ class UserResponse(BaseModel):
     """Safe user object — never includes password_hash."""
     model_config = ConfigDict(from_attributes=True)
 
-    id:         int
-    username:   str
-    email:      str
-    location:   Optional[str]
-    is_active:  bool
-    created_at: datetime
-    updated_at: datetime
+    id:           int
+    full_name:    Optional[str]
+    username:     str
+    email:        str
+    phone_number: Optional[str]
+    location:     Optional[str]
+    is_active:    bool
+    created_at:   datetime
+    updated_at:   datetime
 
 
 class TokenResponse(BaseModel):

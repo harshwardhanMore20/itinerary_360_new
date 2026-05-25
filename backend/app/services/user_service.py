@@ -53,8 +53,10 @@ def create_user(db: Session, data: UserSignup) -> User:
         )
 
     user = User(
+        full_name=data.full_name,
         username=data.username,
         email=data.email.lower(),
+        phone_number=data.phone_number,
         password_hash=hash_password(data.password),
         location=data.location,
     )
@@ -95,6 +97,18 @@ def update_user(db: Session, user: User, data: UserUpdate) -> User:
     Partially update a user profile.
     Only provided (non-None) fields are updated.
     """
+    if data.full_name is not None:
+        user.full_name = data.full_name.strip() or None
+
+    if data.username is not None:
+        existing = get_user_by_username(db, data.username)
+        if existing and existing.id != user.id:
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT,
+                detail="This username is already taken.",
+            )
+        user.username = data.username
+
     if data.email is not None:
         email = data.email.lower()
         existing = get_user_by_email(db, email)
@@ -105,14 +119,8 @@ def update_user(db: Session, user: User, data: UserUpdate) -> User:
             )
         user.email = email
 
-    if data.username is not None:
-        existing = get_user_by_username(db, data.username)
-        if existing and existing.id != user.id:
-            raise HTTPException(
-                status_code=status.HTTP_409_CONFLICT,
-                detail="This username is already taken.",
-            )
-        user.username = data.username
+    if data.phone_number is not None:
+        user.phone_number = data.phone_number.strip() or None
 
     if data.location is not None:
         user.location = data.location.strip() or None
