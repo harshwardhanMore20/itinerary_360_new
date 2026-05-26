@@ -1,0 +1,21 @@
+# Python
+*.py[cod]
+__pycache__/
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local environment files
+.env
+backend/.env
+
+# IDE files
+.vscode/
+.idea/
+
+# Mac / Windows
+.DS_Store
+thumbs.db

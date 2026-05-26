@@ -78,6 +78,7 @@ FLUSH PRIVILEGES;
 ```bash
 cp .env.example .env
 # Edit .env with your DB credentials and a strong JWT_SECRET_KEY
+# If you want token revocation persistence, set REDIS_URL in .env
 ```
 
 Generate a secure JWT secret:

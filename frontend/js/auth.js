@@ -142,9 +142,13 @@ const Auth = (() => {
         const loginBtn = document.querySelector('.login-btn');
         if (!loginBtn) return;
 
+        const loginLink = loginBtn.closest('a');
         const user = getUser();
         if (user) {
             loginBtn.textContent = `👤 ${user.username}`;
+            if (loginLink) {
+                loginLink.href = 'profile.html';
+            }
             loginBtn.onclick = () => window.location.href = 'profile.html';
         }
     }

@@ -3,6 +3,7 @@ app/routes/auth.py
 Authentication endpoints: POST /signup, POST /login, POST /logout
 """
 from fastapi import APIRouter, Depends, status
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.orm import Session
 
 from app.database import get_db
@@ -12,6 +13,8 @@ from app.auth import create_access_token, revoke_token, get_current_user
 from app.models import User
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
+
+bearer_scheme = HTTPBearer()
 
 
 @router.post(
@@ -30,7 +33,7 @@ def signup(payload: UserSignup, db: Session = Depends(get_db)):
     - Returns a JWT token ready to use
     """
     user = create_user(db, payload)
-    token, expires_in = create_access_token(user.id, user.username)
+    token, expires_in = create_access_token(user.id, user.username, user.token_version)
 
     return AuthResponse(
         message="Account created successfully. Welcome to Itinerary 360!",
@@ -53,7 +56,7 @@ def login(payload: UserLogin, db: Session = Depends(get_db)):
     - Timing-safe password comparison to prevent user enumeration
     """
     user = authenticate_user(db, payload.identifier, payload.password)
-    token, expires_in = create_access_token(user.id, user.username)
+    token, expires_in = create_access_token(user.id, user.username, user.token_version)
 
     return AuthResponse(
         message=f"Welcome back, {user.username}!",
@@ -69,13 +72,13 @@ def login(payload: UserLogin, db: Session = Depends(get_db)):
     summary="Log out and invalidate the current token",
 )
 def logout(
-    current_user: User = Depends(get_current_user),
-    # We need raw credentials to revoke the specific token
-    credentials=Depends(__import__("fastapi.security", fromlist=["HTTPBearer"]).HTTPBearer()),
+    credentials: HTTPAuthorizationCredentials = Depends(bearer_scheme),
+    db: Session = Depends(get_db),
 ):
     """
     Revoke the current JWT so it can no longer be used.
     User data is never deleted — only the session is ended.
     """
+    get_current_user(credentials, db)
     revoke_token(credentials.credentials)
     return MessageResponse(message="Logged out successfully.")

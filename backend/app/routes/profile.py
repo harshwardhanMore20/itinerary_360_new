@@ -42,8 +42,7 @@ def update_profile(
 ):
     """
     Partially update profile fields. All fields are optional.
-    Changing the password will not invalidate existing tokens
-    (add token rotation here if needed for higher security).
+    Changing the password invalidates existing tokens and forces a fresh login.
     """
     updated = update_user(db, current_user, payload)
     return UserResponse.model_validate(updated)

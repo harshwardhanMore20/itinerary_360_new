@@ -16,6 +16,7 @@ class User(Base):
     email         = Column(String(255), unique=True, nullable=False, index=True)
     phone_number  = Column(String(30), nullable=True)
     password_hash = Column(String(255), nullable=False)
+    token_version = Column(Integer, default=0, nullable=False)
     location      = Column(String(255), nullable=True)
     is_active     = Column(Boolean, default=True, nullable=False)
 

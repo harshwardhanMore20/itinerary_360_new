@@ -127,6 +127,7 @@ def update_user(db: Session, user: User, data: UserUpdate) -> User:
 
     if data.password is not None:
         user.password_hash = hash_password(data.password)
+        user.token_version += 1
 
     db.commit()
     db.refresh(user)

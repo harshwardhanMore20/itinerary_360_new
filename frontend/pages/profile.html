@@ -260,11 +260,58 @@
         }
 
         // ── Edit profile fields ───────────────────────────────────────
-        function editField(field) {
-            const el = document.getElementById(`field${field.charAt(0).toUpperCase() + field.slice(1)}`);
-            const val = prompt(`Enter new ${field}:`, el.textContent === '—' ? '' : el.textContent);
-            if (val !== null && val.trim()) {
-                el.textContent = val.trim();
+        async function editField(field) {
+            const fieldMap = {
+                fullName: { id: 'fieldFullName', key: 'full_name', label: 'Full Name' },
+                username: { id: 'fieldUsername', key: 'username', label: 'Username' },
+                email: { id: 'fieldEmail', key: 'email', label: 'Email' },
+                phoneNumber: { id: 'fieldPhoneNumber', key: 'phone_number', label: 'Phone Number' },
+                location: { id: 'fieldLocation', key: 'location', label: 'Location' },
+                password: { id: 'fieldPassword', key: 'password', label: 'Password' },
+            };
+
+            const meta = fieldMap[field];
+            if (!meta) return;
+
+            let current = document.getElementById(meta.id).textContent;
+            if (current === '—' || current === '+') current = '';
+
+            let value;
+            if (field === 'password') {
+                value = prompt('Enter your new password:');
+                if (value === null) return;
+                const confirmValue = prompt('Confirm your new password:');
+                if (confirmValue !== value) {
+                    alert('Passwords do not match.');
+                    return;
+                }
+            } else {
+                value = prompt(`Enter new ${meta.label}:`, current);
+                if (value === null) return;
+            }
+
+            value = value.trim();
+            if (!value) return;
+
+            const payload = { [meta.key]: value };
+
+            try {
+                const user = await Auth.updateProfile(payload);
+
+                document.getElementById('fieldFullName').textContent = user.full_name || '—';
+                document.getElementById('fieldUsername').textContent = user.username || '—';
+                document.getElementById('fieldEmail').textContent = user.email || '—';
+                document.getElementById('fieldPhoneNumber').textContent = user.phone_number || '—';
+                document.getElementById('fieldLocation').textContent = user.location || '—';
+                document.getElementById('fieldPassword').textContent = '••••••••';
+
+                if (field === 'password') {
+                    alert('Password updated successfully. Please sign in again.');
+                    await Auth.logout();
+                    window.location.href = 'login.html';
+                }
+            } catch (err) {
+                alert(err.message || 'Unable to update profile.');
             }
         }
 
