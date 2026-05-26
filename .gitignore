@@ -11,6 +11,10 @@ env/
 # Local environment files
 .env
 backend/.env
+*.pyc
+__pycache__/
+venv/
+.venv/
 
 # IDE files
 .vscode/
