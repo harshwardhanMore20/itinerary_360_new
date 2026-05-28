@@ -121,14 +121,14 @@
                 return;
             }
 
-            clearError();
+            errEl.classList.remove('show');
+            // Store email for profile
+            // localStorage.setItem('i360_profile_email', email);
+            // const name = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, ' ');
+            // localStorage.setItem('i360_profile_username', name.charAt(0).toUpperCase() + name.slice(1));
 
-            try {
-                await Auth.login(identifier, password);
-                window.location.href = 'index.html';
-            } catch (err) {
-                showError(err.message || 'Login failed. Please check your credentials.');
-            }
+            // Redirect to profile
+           // window.location.href = 'profile.html';
         });
     </script>
 
