@@ -27,6 +27,7 @@ const Auth = (() => {
     // ── Storage helpers ──────────────────────────────────────────────────────
 
     function saveSession(token, user) {
+        console.debug('Auth.saveSession: token length=', token ? token.length : 0, 'user=', user && user.username);
         localStorage.setItem(TOKEN_KEY, token);
         localStorage.setItem(USER_KEY, JSON.stringify(user));
     }
@@ -68,12 +69,19 @@ const Auth = (() => {
             ...(options.headers || {}),
         };
 
+        console.debug('Auth.request:', path, 'headers:', Object.keys(headers));
         const response = await fetch(`${BASE_URL}${path}`, {
             ...options,
             headers,
+        }).catch(err => {
+            console.error('Auth.request fetch error:', err);
+            throw err;
         });
 
-        const data = await response.json().catch(() => ({}));
+        const text = await response.text().catch(() => '');
+        let data = {};
+        try { data = text ? JSON.parse(text) : {}; } catch (e) { data = { raw: text }; }
+        console.debug('Auth.request response:', path, response.status, data);
 
         if (!response.ok) {
             // FastAPI returns { detail: string | array }

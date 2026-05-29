@@ -49,6 +49,10 @@ class Settings(BaseSettings):
 
     @property
     def origins_list(self) -> list[str]:
+        # In development it's convenient to allow any origin so local
+        # frontends (file:// or Live Server) can communicate with the API.
+        if self.app_env == "development":
+            return ["*"]
         return [o.strip() for o in self.allowed_origins.split(",")]
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
