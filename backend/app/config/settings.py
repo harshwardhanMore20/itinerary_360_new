@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     app_name: str = "Itinerary 360 API"
     app_env: str = "development"
     app_debug: bool = True
-    allowed_origins: str = "http://localhost:5500,http://127.0.0.1:5500"
+    allowed_origins: str = "http://localhost:5500,http://127.0.0.1:5500,http://localhost:3000,http://127.0.0.1:3000,null"
 
     # ── Database ──────────────────────────────────────────────────
     db_host: str = "localhost"
@@ -49,10 +49,6 @@ class Settings(BaseSettings):
 
     @property
     def origins_list(self) -> list[str]:
-        # In development it's convenient to allow any origin so local
-        # frontends (file:// or Live Server) can communicate with the API.
-        if self.app_env == "development":
-            return ["*"]
         return [o.strip() for o in self.allowed_origins.split(",")]
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
