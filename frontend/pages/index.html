@@ -1,105 +1,155 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Itinerary 360 — Explore Maharashtra</title>
-    <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="../styles/index.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/index.css" />
+  </head>
+  <body>
     <!-- ── NAVBAR ── -->
     <header class="navbar" id="mainNavbar">
-        <!-- Injected by navbar.js -->
+      <!-- Injected by navbar.js -->
     </header>
 
     <!-- ── HERO (no background image — clean search focus) ── -->
     <section class="hero-section">
-        <p class="hero-eyebrow">Maharashtra Travel Guide</p>
-        <h1 class="hero-title">Explore <em>Incredible</em><br>Maharashtra</h1>
-        <p class="hero-subtitle">Discover hidden beaches, ancient forts, mist-covered ghats, and sacred temples across the heart of India.</p>
+      <p class="hero-eyebrow">Maharashtra Travel Guide</p>
+      <h1 class="hero-title">Explore <em>Incredible</em><br />Maharashtra</h1>
+      <p class="hero-subtitle">
+        Discover hidden beaches, ancient forts, mist-covered ghats, and sacred
+        temples across the heart of India.
+      </p>
 
-        <!-- Search Bar -->
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search destinations…" autocomplete="off" aria-label="Search destinations">
-            <button aria-label="Search" class="search-btn" id="searchBtn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                </svg>
-            </button>
-        </div>
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search destinations…"
+          autocomplete="off"
+          aria-label="Search destinations"
+        />
+        <button aria-label="Search" class="search-btn" id="searchBtn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </button>
+      </div>
 
-        <!-- Filter Tags -->
-        <div class="filter-tags" role="group" aria-label="Filter destinations">
-            <button class="filter-tag active" data-filter="all">All</button>
-            <button class="filter-tag" data-filter="beach"> Beach</button>
-            <button class="filter-tag" data-filter="hill"> Hill Station</button>
-            <button class="filter-tag" data-filter="spiritual">Spiritual</button>
-            <button class="filter-tag" data-filter="fort">Forts</button>
-        </div>
+      <!-- Filter Tags -->
+      <div class="filter-tags" role="group" aria-label="Filter destinations">
+        <button class="filter-tag active" data-filter="all">All</button>
+        <button class="filter-tag" data-filter="beach">Beach</button>
+        <button class="filter-tag" data-filter="hill">Hill Station</button>
+        <button class="filter-tag" data-filter="spiritual">Spiritual</button>
+        <button class="filter-tag" data-filter="fort">Forts</button>
+      </div>
     </section>
 
     <!-- ── FEATURED DESTINATIONS ── -->
     <section class="featured-section">
-        <div class="section-header">
-            <h2>
-                <span>Our Pick</span>
-                Featured Destinations
-            </h2>
-            <a href="#all-destinations" class="see-all-link">See All →</a>
-        </div>
-        <div class="featured-grid" id="featuredGrid">
-            <!-- Cards rendered by JS -->
-        </div>
+      <div class="section-header">
+        <h2>
+          <span>Our Pick</span>
+          Featured Destinations
+        </h2>
+        <a href="#all-destinations" class="see-all-link">See All →</a>
+      </div>
+      <div class="featured-grid" id="featuredGrid">
+        <!-- Cards rendered by JS -->
+      </div>
     </section>
 
     <!-- ── ALL DESTINATIONS ── -->
     <section class="all-destinations-section" id="all-destinations">
-        <div class="section-header">
-            <h2>
-                <span>Complete Collection</span>
-                All Destinations
-            </h2>
-        </div>
-        <div class="destinations-grid-full" id="allGrid">
-            <!-- Cards rendered by JS -->
-        </div>
+      <div class="section-header">
+        <h2>
+          <span>Complete Collection</span>
+          All Destinations
+        </h2>
+      </div>
+      <div class="destinations-grid-full" id="allGrid">
+        <!-- Cards rendered by JS -->
+      </div>
     </section>
 
     <!-- ── FOOTER ── -->
     <footer class="site-footer">
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">Itinerary <em>360</em></a>
-                <p>Your guide to the best of Maharashtra — from coastal escapes to misty hill stations, ancient forts, and sacred temples.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Destinations</h4>
-                <a href="../destinations/alibaug.html">Alibaug</a>
-                <a href="../destinations/mahabaleshwar.html">Mahabaleshwar</a>
-                <a href="../destinations/lonavala.html">Lonavala</a>
-                <a href="../destinations/malvan.html">Malvan</a>
-                <a href="../destinations/raigad-fort.html">Raigad Fort</a>
-            </div>
-            <div class="footer-col">
-                <h4>Explore</h4>
-                <a href="#" onclick="filterByTag('beach');return false;">Beach Getaways</a>
-                <a href="#" onclick="filterByTag('hill');return false;">Hill Stations</a>
-                <a href="#" onclick="filterByTag('fort');return false;">Forts &amp; Heritage</a>
-                <a href="#" onclick="filterByTag('spiritual');return false;">Temples</a>
-            </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <a href="about.html">About Us</a>
-                <a href="#">Contact</a>
-                <a href="#">Privacy Policy</a>
-            </div>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">Itinerary <em>360</em></a>
+          <p>
+            Your guide to the best of Maharashtra — from coastal escapes to
+            misty hill stations, ancient forts, and sacred temples.
+          </p>
         </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 Itinerary 360 — PVPIT Sangli</span>
-            <span>Made with ♥ in Maharashtra</span>
+        <div class="footer-col">
+          <h4>Destinations</h4>
+          <a href="../destinations/alibaug.html">Alibaug</a>
+          <a href="../destinations/mahabaleshwar.html">Mahabaleshwar</a>
+          <a href="../destinations/lonavala.html">Lonavala</a>
+          <a href="../destinations/malvan.html">Malvan</a>
+          <a href="../destinations/raigad-fort.html">Raigad Fort</a>
         </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a
+            href="#"
+            onclick="
+              filterByTag('beach');
+              return false;
+            "
+            >Beach Getaways</a
+          >
+          <a
+            href="#"
+            onclick="
+              filterByTag('hill');
+              return false;
+            "
+            >Hill Stations</a
+          >
+          <a
+            href="#"
+            onclick="
+              filterByTag('fort');
+              return false;
+            "
+            >Forts &amp; Heritage</a
+          >
+          <a
+            href="#"
+            onclick="
+              filterByTag('spiritual');
+              return false;
+            "
+            >Temples</a
+          >
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About Us</a>
+          <a href="#">Contact</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Itinerary 360 — PVPIT Sangli</span>
+        <span>Made with ♥ in Maharashtra</span>
+      </div>
     </footer>
 
     <!-- Toast -->
@@ -110,42 +160,171 @@
     <script src="../js/darkmode.js"></script>
     <script src="../js/wishlist.js"></script>
     <script>
-        // ── Build navbar
-        buildNavbarPages('home');
-        if (window.Auth && Auth.updateNavbarAuthState) Auth.updateNavbarAuthState();
+      // ── Build navbar
+      buildNavbarPages("home");
+      if (window.Auth && Auth.updateNavbarAuthState)
+        Auth.updateNavbarAuthState();
 
-        // ── Destination Data ──────────────────────────────────────────
-        const destinations = [  
-            // Konkan Coast
-            { id: 'alibaug',         name: 'Alibaug',             sub: 'Konkan Coast',     tag: 'beach',    href: '../destinations/alibaug.html',         img: '../assets/alibaug.png',          badge: 'Konkan' },
-            { id: 'ganpatipule',     name: 'Ganpatipule',         sub: 'Ratnagiri',        tag: 'spiritual',href: '../destinations/ganpatipule.html',     img: '../assets/Ganpatipule.png',       badge: 'Spiritual' },
-            { id: 'malvan',          name: 'Malvan',              sub: 'Sindhudurg',       tag: 'beach',    href: '../destinations/malvan.html',          img: '../assets/Malvan.png',            badge: 'Marine' },
-            { id: 'ratnagiri',       name: 'Ratnagiri',           sub: 'Konkan Coast',     tag: 'beach',    href: '../destinations/ratnagiri.html',       img: '../assets/Ratnagiri.png',         badge: 'Konkan' },
-            { id: 'dapoli',          name: 'Dapoli',              sub: 'Ratnagiri',        tag: 'beach',    href: '../destinations/dapoli.html',          img: '../assets/Dapoli.png',            badge: 'Konkan' },
-            { id: 'harihareshwar',   name: 'Harihareshwar',       sub: 'Raigad',           tag: 'spiritual',href: '../destinations/harihareshwar.html',   img: '../assets/Harihareshwar.png',     badge: 'Spiritual' },
-            // Western Ghats
-            { id: 'malshej',         name: 'Malshej Ghat',        sub: 'Western Ghats',    tag: 'hill',     href: '../destinations/malshej-ghat.html',    img: '../assets/Malshej Ghat.png',     badge: 'Hill Station' },
-            { id: 'mahabaleshwar',   name: 'Mahabaleshwar',       sub: 'Satara District',  tag: 'hill',     href: '../destinations/mahabaleshwar.html',   img: '../assets/Mahabaleshwar.png',     badge: 'Hill Station' },
-            { id: 'lonavala',        name: 'Lonavala & Khandala', sub: 'Pune Division',    tag: 'hill',     href: '../destinations/lonavala.html',        img: '../assets/Lonavala.png',          badge: 'Hill Station' },
-            { id: 'matheran',        name: 'Matheran',            sub: 'Raigad District',  tag: 'hill',     href: '../destinations/matheran.html',        img: '../assets/Matheran.png',          badge: 'Eco Resort' },
-            { id: 'rajmachi',        name: 'Rajmachi',            sub: 'Sahyadri Range',   tag: 'fort',     href: '../destinations/rajmachi.html',        img: '../assets/rajmachi.png',          badge: 'Fort Trek' },
-            // Forts
-            { id: 'raigad',          name: 'Raigad Fort',         sub: 'Raigad District',  tag: 'fort',     href: '../destinations/raigad-fort.html',     img: '../assets/Raigad Fort.png',            badge: 'Heritage Fort' },
-            { id: 'sinhagad',        name: 'Sinhagad Fort',       sub: 'Pune',             tag: 'fort',     href: '../destinations/sinhagad-fort.html',   img: '../assets/Sinhagad Fort.png',          badge: 'Heritage Fort' },
-            { id: 'pratapgad',       name: 'Pratapgad Fort',      sub: 'Satara',           tag: 'fort',     href: '../destinations/pratapgad-fort.html',  img: '../assets/Pratapgad Fort.png',         badge: 'Maratha Fort' },
-            { id: 'lohagad',         name: 'Lohagad Fort',        sub: 'Pune District',    tag: 'fort',     href: '../destinations/lohagad-fort.html',    img: '../assets/Lohagad Fort.png',           badge: 'Trek Fort' },
-            // Spiritual
-            { id: 'siddhivinayak',   name: 'Siddhivinayak Temple',sub: 'Mumbai',           tag: 'spiritual',href: '../destinations/siddhivinayak.html',  img: '../assets/Siddhivinayak.png',            badge: 'Spiritual' },
-        ];
+      // ── Destination Data ──────────────────────────────────────────
+      const destinations = [
+        // Konkan Coast
+        {
+          id: "alibaug",
+          name: "Alibaug",
+          sub: "Konkan Coast",
+          tag: "beach",
+          href: "../destinations/alibaug.html",
+          img: "../assets/alibaug.webp",
+          badge: "Konkan",
+        },
+        {
+          id: "ganpatipule",
+          name: "Ganpatipule",
+          sub: "Ratnagiri",
+          tag: "spiritual",
+          href: "../destinations/ganpatipule.html",
+          img: "../assets/Ganpatipule.webp",
+          badge: "Spiritual",
+        },
+        {
+          id: "malvan",
+          name: "Malvan",
+          sub: "Sindhudurg",
+          tag: "beach",
+          href: "../destinations/malvan.html",
+          img: "../assets/Malvan.webp",
+          badge: "Marine",
+        },
+        {
+          id: "ratnagiri",
+          name: "Ratnagiri",
+          sub: "Konkan Coast",
+          tag: "beach",
+          href: "../destinations/ratnagiri.html",
+          img: "../assets/Ratnagiri.webp",
+          badge: "Konkan",
+        },
+        {
+          id: "dapoli",
+          name: "Dapoli",
+          sub: "Ratnagiri",
+          tag: "beach",
+          href: "../destinations/dapoli.html",
+          img: "../assets/Dapoli.webp",
+          badge: "Konkan",
+        },
+        {
+          id: "harihareshwar",
+          name: "Harihareshwar",
+          sub: "Raigad",
+          tag: "spiritual",
+          href: "../destinations/harihareshwar.html",
+          img: "../assets/Harihareshwar.webp",
+          badge: "Spiritual",
+        },
+        // Western Ghats
+        {
+          id: "malshej",
+          name: "Malshej Ghat",
+          sub: "Western Ghats",
+          tag: "hill",
+          href: "../destinations/malshej-ghat.html",
+          img: "../assets/Malshej Ghat.webp",
+          badge: "Hill Station",
+        },
+        {
+          id: "mahabaleshwar",
+          name: "Mahabaleshwar",
+          sub: "Satara District",
+          tag: "hill",
+          href: "../destinations/mahabaleshwar.html",
+          img: "../assets/Mahabaleshwar.webp",
+          badge: "Hill Station",
+        },
+        {
+          id: "lonavala",
+          name: "Lonavala & Khandala",
+          sub: "Pune Division",
+          tag: "hill",
+          href: "../destinations/lonavala.html",
+          img: "../assets/Lonavala.webp",
+          badge: "Hill Station",
+        },
+        {
+          id: "matheran",
+          name: "Matheran",
+          sub: "Raigad District",
+          tag: "hill",
+          href: "../destinations/matheran.html",
+          img: "../assets/Matheran.webp",
+          badge: "Eco Resort",
+        },
+        {
+          id: "rajmachi",
+          name: "Rajmachi",
+          sub: "Sahyadri Range",
+          tag: "fort",
+          href: "../destinations/rajmachi.html",
+          img: "../assets/rajmachi.webp",
+          badge: "Fort Trek",
+        },
+        // Forts
+        {
+          id: "raigad",
+          name: "Raigad Fort",
+          sub: "Raigad District",
+          tag: "fort",
+          href: "../destinations/raigad-fort.html",
+          img: "../assets/Raigad Fort.webp",
+          badge: "Heritage Fort",
+        },
+        {
+          id: "sinhagad",
+          name: "Sinhagad Fort",
+          sub: "Pune",
+          tag: "fort",
+          href: "../destinations/sinhagad-fort.html",
+          img: "../assets/Sinhagad Fort.webp",
+          badge: "Heritage Fort",
+        },
+        {
+          id: "pratapgad",
+          name: "Pratapgad Fort",
+          sub: "Satara",
+          tag: "fort",
+          href: "../destinations/pratapgad-fort.html",
+          img: "../assets/Pratapgad Fort.webp",
+          badge: "Maratha Fort",
+        },
+        {
+          id: "lohagad",
+          name: "Lohagad Fort",
+          sub: "Pune District",
+          tag: "fort",
+          href: "../destinations/lohagad-fort.html",
+          img: "../assets/Lohagad Fort.webp",
+          badge: "Trek Fort",
+        },
+        // Spiritual
+        {
+          id: "siddhivinayak",
+          name: "Siddhivinayak Temple",
+          sub: "Mumbai",
+          tag: "spiritual",
+          href: "../destinations/siddhivinayak.html",
+          img: "../assets/Siddhivinayak.webp",
+          badge: "Spiritual",
+        },
+      ];
 
-        // ── Build card HTML ──────────────────────────────────────────
-        function buildCard(d) {
-            const isWishlisted = Wishlist.hasDestination(d.id);
-            return `
+      // ── Build card HTML ──────────────────────────────────────────
+      function buildCard(d, loading = "lazy") {
+        const isWishlisted = Wishlist.hasDestination(d.id);
+        return `
             <div class="destination-card" data-tag="${d.tag}" data-name="${d.name.toLowerCase()}">
                 <a href="${d.href}" class="card-link">
                     <div class="destination-img-wrap">
-                        <img src="${d.img}" alt="${d.name}" class="destination-img"
+                        <img src="${d.img}" alt="${d.name}" class="destination-img" loading="${loading}" decoding="async"
                              onerror="this.style.background='linear-gradient(135deg,#f0e0c0,#d4a96a)';this.style.display='block'">
                         <span class="card-badge">${d.badge}</span>
                     </div>
@@ -155,7 +334,7 @@
                     </div>
                 </a>
                 <button
-                    class="wishlist-btn ${isWishlisted ? 'wishlisted' : ''}"
+                    class="wishlist-btn ${isWishlisted ? "wishlisted" : ""}"
                     data-wishlist-dest-id="${d.id}"
                     data-wishlist-dest-name="${d.name}"
                     data-wishlist-dest-sub="${d.sub}"
@@ -163,111 +342,137 @@
                     data-wishlist-dest-href="${d.href}"
                     data-wishlist-dest-img="${d.img}"
                     data-wishlist-dest-tag="${d.tag}"
-                    title="${isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}"
-                    aria-label="${isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}"
+                    title="${isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}"
+                    aria-label="${isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}"
                     aria-pressed="${isWishlisted}">
-                    ${isWishlisted ? '❤️' : '🤍'}
+                    ${isWishlisted ? "❤️" : "🤍"}
                 </button>
             </div>`;
-        }
+      }
 
-        // ── Render grids ─────────────────────────────────────────────
-        const featuredGrid = document.getElementById('featuredGrid');
-        const allGrid      = document.getElementById('allGrid');
+      // ── Render grids ─────────────────────────────────────────────
+      const featuredGrid = document.getElementById("featuredGrid");
+      const allGrid = document.getElementById("allGrid");
 
-        // All destinations go into the full grid
-        allGrid.innerHTML = destinations.map(buildCard).join('');
+      // All destinations go into the full grid
+      allGrid.innerHTML = destinations.map((d) => buildCard(d)).join("");
 
-        // Featured = first 6 from ALL destinations (rendered separately, always visible)
-        // We render them into featuredGrid fresh on each filter call
-        function renderFeatured(filtered) {
-            featuredGrid.innerHTML = filtered.slice(0, 6).map(buildCard).join('');
-        }
-        renderFeatured(destinations);
+      // Featured = first 6 from ALL destinations (rendered separately, always visible)
+      // We render them into featuredGrid fresh on each filter call
+      function renderFeatured(filtered) {
+        featuredGrid.innerHTML = filtered
+          .slice(0, 6)
+          .map((d) => buildCard(d, "eager"))
+          .join("");
+      }
+      renderFeatured(destinations);
 
-        // Update wishlist button icons when wishlist changes
-        window.addEventListener('wishlistUpdated', () => {
-            document.querySelectorAll('[data-wishlist-dest-id]').forEach(btn => {
-                const id = btn.dataset.wishlistDestId;
-                const active = Wishlist.hasDestination(id);
-                btn.innerHTML = active ? '❤️' : '🤍';
-            });
+      // Update wishlist button icons when wishlist changes
+      window.addEventListener("wishlistUpdated", () => {
+        document.querySelectorAll("[data-wishlist-dest-id]").forEach((btn) => {
+          const id = btn.dataset.wishlistDestId;
+          const active = Wishlist.hasDestination(id);
+          btn.innerHTML = active ? "❤️" : "🤍";
+        });
+      });
+
+      // ── Filter & Search ──────────────────────────────────────────
+      let currentFilter = "all";
+
+      document.querySelectorAll(".filter-tag").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".filter-tag")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          currentFilter = btn.dataset.filter;
+          applyFilter();
+        });
+      });
+
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", applyFilter);
+      document
+        .getElementById("searchBtn")
+        .addEventListener("click", applyFilter);
+
+      function applyFilter() {
+        const query = document
+          .getElementById("searchInput")
+          .value.trim()
+          .toLowerCase();
+
+        // 1. Filter the master destinations array by tag + search text
+        const filtered = destinations.filter((d) => {
+          const tagMatch = currentFilter === "all" || d.tag === currentFilter;
+          const nameMatch =
+            !query ||
+            d.name.toLowerCase().includes(query) ||
+            d.sub.toLowerCase().includes(query);
+          return tagMatch && nameMatch;
         });
 
-        // ── Filter & Search ──────────────────────────────────────────
-        let currentFilter = 'all';
-
-        document.querySelectorAll('.filter-tag').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-tag').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentFilter = btn.dataset.filter;
-                applyFilter();
-            });
-        });
-
-        document.getElementById('searchInput').addEventListener('input', applyFilter);
-        document.getElementById('searchBtn').addEventListener('click', applyFilter);
-
-        function applyFilter() {
-            const query = document.getElementById('searchInput').value.trim().toLowerCase();
-
-            // 1. Filter the master destinations array by tag + search text
-            const filtered = destinations.filter(d => {
-                const tagMatch  = currentFilter === 'all' || d.tag === currentFilter;
-                const nameMatch = !query || d.name.toLowerCase().includes(query) || d.sub.toLowerCase().includes(query);
-                return tagMatch && nameMatch;
-            });
-
-            // 2. Re-render featured grid with top 6 of the filtered results
-            if (filtered.length > 0) {
-                featuredGrid.innerHTML = filtered.slice(0, 6).map(buildCard).join('');
-            } else {
-                const label = query || (currentFilter !== 'all' ? currentFilter : '');
-                featuredGrid.innerHTML = `
+        // 2. Re-render featured grid with top 6 of the filtered results
+        if (filtered.length > 0) {
+          featuredGrid.innerHTML = filtered
+            .slice(0, 6)
+            .map((d) => buildCard(d, "eager"))
+            .join("");
+        } else {
+          const label = query || (currentFilter !== "all" ? currentFilter : "");
+          featuredGrid.innerHTML = `
                     <div class="no-results" style="grid-column:1/-1">
                         <div class="no-results-icon">🔍</div>
                         <p>No destinations found for "<strong>${label}</strong>"</p>
                     </div>`;
-            }
+        }
 
-            // 3. Show/hide cards in the All Destinations grid
-            const allCards = allGrid.querySelectorAll('.destination-card');
-            let allVisible = 0;
-            allCards.forEach(card => {
-                const tagMatch  = currentFilter === 'all' || card.dataset.tag === currentFilter;
-                const nameMatch = !query || card.dataset.name.includes(query);
-                const show = tagMatch && nameMatch;
-                card.style.display = show ? '' : 'none';
-                if (show) allVisible++;
-            });
+        // 3. Show/hide cards in the All Destinations grid
+        const allCards = allGrid.querySelectorAll(".destination-card");
+        let allVisible = 0;
+        allCards.forEach((card) => {
+          const tagMatch =
+            currentFilter === "all" || card.dataset.tag === currentFilter;
+          const nameMatch = !query || card.dataset.name.includes(query);
+          const show = tagMatch && nameMatch;
+          card.style.display = show ? "" : "none";
+          if (show) allVisible++;
+        });
 
-            // 4. No-results for the All grid
-            const noRes = allGrid.querySelector('.no-results');
-            if (allVisible === 0) {
-                if (!noRes) {
-                    const label = query || (currentFilter !== 'all' ? currentFilter : '');
-                    allGrid.insertAdjacentHTML('beforeend', `
+        // 4. No-results for the All grid
+        const noRes = allGrid.querySelector(".no-results");
+        if (allVisible === 0) {
+          if (!noRes) {
+            const label =
+              query || (currentFilter !== "all" ? currentFilter : "");
+            allGrid.insertAdjacentHTML(
+              "beforeend",
+              `
                         <div class="no-results" style="grid-column:1/-1">
                             <div class="no-results-icon">🔍</div>
                             <p>No destinations found for "<strong>${label}</strong>"</p>
-                        </div>`);
-                }
-            } else {
-                if (noRes) noRes.remove();
-            }
+                        </div>`,
+            );
+          }
+        } else {
+          if (noRes) noRes.remove();
         }
+      }
 
-        // Called from footer links
-        function filterByTag(tag) {
-            document.querySelectorAll('.filter-tag').forEach(b => b.classList.remove('active'));
-            const btn = document.querySelector(`[data-filter="${tag}"]`);
-            if (btn) btn.classList.add('active');
-            currentFilter = tag;
-            applyFilter();
-            document.getElementById('all-destinations').scrollIntoView({ behavior: 'smooth' });
-        }
+      // Called from footer links
+      function filterByTag(tag) {
+        document
+          .querySelectorAll(".filter-tag")
+          .forEach((b) => b.classList.remove("active"));
+        const btn = document.querySelector(`[data-filter="${tag}"]`);
+        if (btn) btn.classList.add("active");
+        currentFilter = tag;
+        applyFilter();
+        document
+          .getElementById("all-destinations")
+          .scrollIntoView({ behavior: "smooth" });
+      }
     </script>
-
-</body>
+  </body>
 </html>

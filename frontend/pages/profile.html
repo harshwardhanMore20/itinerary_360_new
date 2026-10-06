@@ -1,138 +1,174 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile — Itinerary 360</title>
-    <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="../styles/profile.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/profile.css" />
+  </head>
+  <body>
     <!-- ── NAVBAR ── -->
     <header class="navbar" id="mainNavbar"></header>
 
     <main class="profile-page">
+      <!-- ── Profile Header ── -->
+      <div class="profile-page-header">
+        <div class="profile-avatar">🧭</div>
+        <div>
+          <h1>Traveller Account</h1>
+          <p>
+            Manage your profile, saved destinations and wishlisted activities
+          </p>
+        </div>
+      </div>
 
-        <!-- ── Profile Header ── -->
-        <div class="profile-page-header">
-            <div class="profile-avatar">🧭</div>
-            <div>
-                <h1>Traveller Account</h1>
-                <p>Manage your profile, saved destinations and wishlisted activities</p>
-            </div>
+      <!-- ── Tabs ── -->
+      <div class="profile-tabs" role="tablist">
+        <button
+          class="profile-tab active"
+          data-tab="account"
+          role="tab"
+          aria-selected="true"
+        >
+          👤 My Account
+        </button>
+        <button
+          class="profile-tab"
+          data-tab="wishlist"
+          role="tab"
+          aria-selected="false"
+        >
+          ❤️ Wishlist
+          <span class="wishlist-count-badge" id="wishlistTabCount">0</span>
+        </button>
+      </div>
+
+      <!-- ── Account Panel ── -->
+      <div class="tab-panel active" id="panel-account">
+        <div class="profile-section">
+          <h2>My Account</h2>
+          <div class="profile-field">
+            <span class="field-label">Full Name</span>
+            <span class="field-value" id="fieldFullName">—</span>
+            <button class="edit-btn" onclick="editField('fullName')">
+              Edit
+            </button>
+          </div>
+          <div class="profile-field">
+            <span class="field-label">Username</span>
+            <span class="field-value" id="fieldUsername">—</span>
+            <button class="edit-btn" onclick="editField('username')">
+              Edit
+            </button>
+          </div>
+          <div class="profile-field">
+            <span class="field-label">Email</span>
+            <span class="field-value" id="fieldEmail">—</span>
+            <button class="edit-btn" onclick="editField('email')">Edit</button>
+          </div>
+          <div class="profile-field">
+            <span class="field-label">Phone</span>
+            <span class="field-value" id="fieldPhoneNumber">—</span>
+            <button class="edit-btn" onclick="editField('phoneNumber')">
+              Edit
+            </button>
+          </div>
+          <div class="profile-field">
+            <span class="field-label">Password</span>
+            <span class="field-value" id="fieldPassword">••••••••</span>
+            <button class="edit-btn" onclick="editField('password')">
+              Change
+            </button>
+          </div>
+          <div class="profile-field">
+            <span class="field-label">Location</span>
+            <span class="field-value" id="fieldLocation">—</span>
+            <button class="edit-btn" onclick="editField('location')">
+              Edit
+            </button>
+          </div>
         </div>
 
-        <!-- ── Tabs ── -->
-        <div class="profile-tabs" role="tablist">
-            <button class="profile-tab active" data-tab="account" role="tab" aria-selected="true">👤 My Account</button>
-            <button class="profile-tab"         data-tab="wishlist" role="tab" aria-selected="false">❤️ Wishlist <span class="wishlist-count-badge" id="wishlistTabCount">0</span></button>
+        <div class="profile-section">
+          <h2>Account Actions</h2>
+          <button class="logout-btn" id="logoutBtn">Log Out</button>
+        </div>
+      </div>
+
+      <!-- ── Wishlist Panel ── -->
+      <div class="tab-panel" id="panel-wishlist">
+        <div class="wishlist-panel-header">
+          <h2>
+            My Wishlist
+            <span class="wishlist-count-badge" id="wishlistBadge">0</span>
+          </h2>
+          <button class="clear-wishlist-btn" onclick="clearAllWishlist()">
+            Clear All
+          </button>
         </div>
 
-        <!-- ── Account Panel ── -->
-        <div class="tab-panel active" id="panel-account">
-            <div class="profile-section">
-                <h2>My Account</h2>
-                <div class="profile-field">
-                    <span class="field-label">Full Name</span>
-                    <span class="field-value" id="fieldFullName">—</span>
-                    <button class="edit-btn" onclick="editField('fullName')">Edit</button>
-                </div>
-                <div class="profile-field">
-                    <span class="field-label">Username</span>
-                    <span class="field-value" id="fieldUsername">—</span>
-                    <button class="edit-btn" onclick="editField('username')">Edit</button>
-                </div>
-                <div class="profile-field">
-                    <span class="field-label">Email</span>
-                    <span class="field-value" id="fieldEmail">—</span>
-                    <button class="edit-btn" onclick="editField('email')">Edit</button>
-                </div>
-                <div class="profile-field">
-                    <span class="field-label">Phone</span>
-                    <span class="field-value" id="fieldPhoneNumber">—</span>
-                    <button class="edit-btn" onclick="editField('phoneNumber')">Edit</button>
-                </div>
-                <div class="profile-field">
-                    <span class="field-label">Password</span>
-                    <span class="field-value" id="fieldPassword">••••••••</span>
-                    <button class="edit-btn" onclick="editField('password')">Change</button>
-                </div>
-                <div class="profile-field">
-                    <span class="field-label">Location</span>
-                    <span class="field-value" id="fieldLocation">—</span>
-                    <button class="edit-btn" onclick="editField('location')">Edit</button>
-                </div>
-            </div>
-
-            <div class="profile-section">
-                <h2>Account Actions</h2>
-                <button class="logout-btn" id="logoutBtn">Log Out</button>
-            </div>
+        <!-- Sub-tabs -->
+        <div class="wishlist-subtabs">
+          <button class="wishlist-subtab active" data-subtab="destinations">
+            🗺 Destinations
+          </button>
+          <button class="wishlist-subtab" data-subtab="activities">
+            🎯 Activities & Places
+          </button>
         </div>
 
-        <!-- ── Wishlist Panel ── -->
-        <div class="tab-panel" id="panel-wishlist">
-            <div class="wishlist-panel-header">
-                <h2>My Wishlist <span class="wishlist-count-badge" id="wishlistBadge">0</span></h2>
-                <button class="clear-wishlist-btn" onclick="clearAllWishlist()">Clear All</button>
-            </div>
-
-            <!-- Sub-tabs -->
-            <div class="wishlist-subtabs">
-                <button class="wishlist-subtab active" data-subtab="destinations">🗺 Destinations</button>
-                <button class="wishlist-subtab"         data-subtab="activities">🎯 Activities & Places</button>
-            </div>
-
-            <!-- Destinations Sub-panel -->
-            <div class="wishlist-subpanel active" id="subpanel-destinations">
-                <div class="wishlist-dest-grid" id="wishlistDestGrid">
-                    <!-- Rendered by JS -->
-                </div>
-            </div>
-
-            <!-- Activities Sub-panel -->
-            <div class="wishlist-subpanel" id="subpanel-activities">
-                <div class="wishlist-activities-list" id="wishlistActList">
-                    <!-- Rendered by JS -->
-                </div>
-            </div>
+        <!-- Destinations Sub-panel -->
+        <div class="wishlist-subpanel active" id="subpanel-destinations">
+          <div class="wishlist-dest-grid" id="wishlistDestGrid">
+            <!-- Rendered by JS -->
+          </div>
         </div>
 
+        <!-- Activities Sub-panel -->
+        <div class="wishlist-subpanel" id="subpanel-activities">
+          <div class="wishlist-activities-list" id="wishlistActList">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
     </main>
 
     <!-- ── FOOTER ── -->
     <footer class="site-footer">
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">Itinerary <em>360</em></a>
-                <p>Your guide to the best of Maharashtra — from coastal escapes to misty hill stations and ancient sacred sites.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Destinations</h4>
-                <a href="../destinations/alibaug.html">Alibaug</a>
-                <a href="../destinations/mahabaleshwar.html">Mahabaleshwar</a>
-                <a href="../destinations/lonavala.html">Lonavala</a>
-                <a href="../destinations/malvan.html">Malvan</a>
-            </div>
-            <div class="footer-col">
-                <h4>Explore</h4>
-                <a href="index.html">Beach Getaways</a>
-                <a href="index.html">Hill Stations</a>
-                <a href="index.html">Forts &amp; Heritage</a>
-                <a href="index.html">Temples</a>
-            </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <a href="about.html">About Us</a>
-                <a href="#">Contact</a>
-                <a href="#">Privacy Policy</a>
-            </div>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">Itinerary <em>360</em></a>
+          <p>
+            Your guide to the best of Maharashtra — from coastal escapes to
+            misty hill stations and ancient sacred sites.
+          </p>
         </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 Itinerary 360 — PVPIT Sangli</span>
-            <span>Made with ♥ in Maharashtra</span>
+        <div class="footer-col">
+          <h4>Destinations</h4>
+          <a href="../destinations/alibaug.html">Alibaug</a>
+          <a href="../destinations/mahabaleshwar.html">Mahabaleshwar</a>
+          <a href="../destinations/lonavala.html">Lonavala</a>
+          <a href="../destinations/malvan.html">Malvan</a>
         </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="index.html">Beach Getaways</a>
+          <a href="index.html">Hill Stations</a>
+          <a href="index.html">Forts &amp; Heritage</a>
+          <a href="index.html">Temples</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About Us</a>
+          <a href="#">Contact</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Itinerary 360 — PVPIT Sangli</span>
+        <span>Made with ♥ in Maharashtra</span>
+      </div>
     </footer>
 
     <!-- Toast -->
@@ -143,217 +179,249 @@
     <script src="../js/darkmode.js"></script>
     <script src="../js/wishlist.js"></script>
     <script>
-        buildNavbarPages('profile');
+      buildNavbarPages("profile");
 
-        // ── Tab switching ─────────────────────────────────────────────
-        document.querySelectorAll('.profile-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.profile-tab').forEach(t => {
-                    t.classList.remove('active');
-                    t.setAttribute('aria-selected', 'false');
-                });
-                document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-                tab.classList.add('active');
-                tab.setAttribute('aria-selected', 'true');
-                document.getElementById(`panel-${tab.dataset.tab}`).classList.add('active');
-                if (tab.dataset.tab === 'wishlist') renderWishlist();
-            });
+      // ── Tab switching ─────────────────────────────────────────────
+      document.querySelectorAll(".profile-tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll(".profile-tab").forEach((t) => {
+            t.classList.remove("active");
+            t.setAttribute("aria-selected", "false");
+          });
+          document
+            .querySelectorAll(".tab-panel")
+            .forEach((p) => p.classList.remove("active"));
+          tab.classList.add("active");
+          tab.setAttribute("aria-selected", "true");
+          document
+            .getElementById(`panel-${tab.dataset.tab}`)
+            .classList.add("active");
+          if (tab.dataset.tab === "wishlist") renderWishlist();
         });
+      });
 
-        // ── Wishlist sub-tabs ─────────────────────────────────────────
-        document.querySelectorAll('.wishlist-subtab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.wishlist-subtab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.wishlist-subpanel').forEach(p => p.classList.remove('active'));
-                tab.classList.add('active');
-                document.getElementById(`subpanel-${tab.dataset.subtab}`).classList.add('active');
-            });
+      // ── Wishlist sub-tabs ─────────────────────────────────────────
+      document.querySelectorAll(".wishlist-subtab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document
+            .querySelectorAll(".wishlist-subtab")
+            .forEach((t) => t.classList.remove("active"));
+          document
+            .querySelectorAll(".wishlist-subpanel")
+            .forEach((p) => p.classList.remove("active"));
+          tab.classList.add("active");
+          document
+            .getElementById(`subpanel-${tab.dataset.subtab}`)
+            .classList.add("active");
         });
+      });
 
-        // ── Render Wishlist ───────────────────────────────────────────
-        function renderWishlist() {
-            renderDestinations();
-            renderActivities();
-            updateCount();
-        }
+      // ── Render Wishlist ───────────────────────────────────────────
+      function renderWishlist() {
+        renderDestinations();
+        renderActivities();
+        updateCount();
+      }
 
-        function renderDestinations() {
-            const grid = document.getElementById('wishlistDestGrid');
-            const dests = Wishlist.getDestinations();
+      function renderDestinations() {
+        const grid = document.getElementById("wishlistDestGrid");
+        const dests = Wishlist.getDestinations();
 
-            if (dests.length === 0) {
-                grid.innerHTML = `
+        if (dests.length === 0) {
+          grid.innerHTML = `
                     <div class="empty-wishlist" style="grid-column:1/-1">
                         <div class="empty-icon">🗺️</div>
                         <h3>No destinations saved yet</h3>
                         <p>Browse destinations and tap the heart to save them here.</p>
                         <a href="index.html" class="browse-btn">Browse Destinations</a>
                     </div>`;
-                return;
-            }
+          return;
+        }
 
-            grid.innerHTML = dests.map(d => `
+        grid.innerHTML = dests
+          .map(
+            (d) => `
                 <div class="wishlist-dest-card" data-id="${d.id}">
-                    <img src="${d.img || ''}" alt="${d.name}" class="wishlist-dest-img"
+                  <img src="${(d.img || "").replace(/\.png$/i, ".webp")}" alt="${d.name}" class="wishlist-dest-img" loading="lazy" decoding="async"
                          onerror="this.style.background='linear-gradient(135deg,#f0e0c0,#d4a96a)'">
                     <div class="wishlist-dest-body">
-                        <div class="wishlist-dest-badge">${d.badge || ''}</div>
+                        <div class="wishlist-dest-badge">${d.badge || ""}</div>
                         <div class="wishlist-dest-name">${d.name}</div>
-                        <div class="wishlist-dest-meta">${d.sub || ''}</div>
+                        <div class="wishlist-dest-meta">${d.sub || ""}</div>
                         <div class="wishlist-dest-actions">
-                            <a href="${d.href || '#'}" class="visit-btn">Explore →</a>
+                            <a href="${d.href || "#"}" class="visit-btn">Explore →</a>
                             <button class="remove-btn" onclick="removeDestFromWishlist('${d.id}')" title="Remove from Wishlist" aria-label="Remove ${d.name} from Wishlist">🗑</button>
                         </div>
                     </div>
-                </div>`).join('');
-        }
+                </div>`,
+          )
+          .join("");
+      }
 
-        function renderActivities() {
-            const list = document.getElementById('wishlistActList');
-            const acts = Wishlist.getActivities();
+      function renderActivities() {
+        const list = document.getElementById("wishlistActList");
+        const acts = Wishlist.getActivities();
 
-            if (acts.length === 0) {
-                list.innerHTML = `
+        if (acts.length === 0) {
+          list.innerHTML = `
                     <div class="empty-wishlist">
                         <div class="empty-icon">🎯</div>
                         <h3>No activities saved yet</h3>
                         <p>Visit a destination page and tap the heart on activities or places to save them here.</p>
                         <a href="index.html" class="browse-btn">Explore Destinations</a>
                     </div>`;
-                return;
-            }
+          return;
+        }
 
-            list.innerHTML = acts.map(a => `
+        list.innerHTML = acts
+          .map(
+            (a) => `
                 <div class="wishlist-act-item" data-id="${a.id}">
-                    <div class="act-icon-bubble">${a.icon || '📌'}</div>
+                    <div class="act-icon-bubble">${a.icon || "📌"}</div>
                     <div class="act-details">
                         <h4>${a.name}</h4>
-                        <p>${a.desc || ''}</p>
+                        <p>${a.desc || ""}</p>
                     </div>
-                    ${a.location ? `<span class="act-location-tag">${a.location}</span>` : ''}
+                    ${a.location ? `<span class="act-location-tag">${a.location}</span>` : ""}
                     <button class="act-remove-btn" onclick="removeActFromWishlist('${a.id}')" title="Remove from Wishlist" aria-label="Remove ${a.name}">✕</button>
-                </div>`).join('');
+                </div>`,
+          )
+          .join("");
+      }
+
+      function updateCount() {
+        const total =
+          Wishlist.getDestinations().length + Wishlist.getActivities().length;
+        document.getElementById("wishlistBadge").textContent = total;
+        document.getElementById("wishlistTabCount").textContent = total;
+      }
+
+      function removeDestFromWishlist(id) {
+        Wishlist.removeDestination(id);
+        renderDestinations();
+        updateCount();
+        Wishlist.showToast("Destination removed from Wishlist", "remove");
+      }
+
+      function removeActFromWishlist(id) {
+        Wishlist.removeActivity(id);
+        renderActivities();
+        updateCount();
+        Wishlist.showToast("Activity removed from Wishlist", "remove");
+      }
+
+      function clearAllWishlist() {
+        if (!confirm("Clear all items from your Wishlist?")) return;
+        Wishlist.clearAll();
+        renderWishlist();
+        Wishlist.showToast("Wishlist cleared", "remove");
+      }
+
+      // ── Edit profile fields ───────────────────────────────────────
+      async function editField(field) {
+        const fieldMap = {
+          fullName: {
+            id: "fieldFullName",
+            key: "full_name",
+            label: "Full Name",
+          },
+          username: { id: "fieldUsername", key: "username", label: "Username" },
+          email: { id: "fieldEmail", key: "email", label: "Email" },
+          phoneNumber: {
+            id: "fieldPhoneNumber",
+            key: "phone_number",
+            label: "Phone Number",
+          },
+          location: { id: "fieldLocation", key: "location", label: "Location" },
+          password: { id: "fieldPassword", key: "password", label: "Password" },
+        };
+
+        const meta = fieldMap[field];
+        if (!meta) return;
+
+        let current = document.getElementById(meta.id).textContent;
+        if (current === "—" || current === "••••••••") current = "";
+
+        let value;
+        if (field === "password") {
+          value = prompt("Enter your new password:");
+          if (value === null) return;
+          const confirmValue = prompt("Confirm your new password:");
+          if (confirmValue !== value) {
+            alert("Passwords do not match.");
+            return;
+          }
+        } else {
+          value = prompt(`Enter new ${meta.label}:`, current);
+          if (value === null) return;
         }
 
-        function updateCount() {
-            const total = Wishlist.getDestinations().length + Wishlist.getActivities().length;
-            document.getElementById('wishlistBadge').textContent = total;
-            document.getElementById('wishlistTabCount').textContent = total;
+        value = value.trim();
+        if (!value) return;
+
+        const payload = { [meta.key]: value };
+
+        try {
+          const user = await Auth.updateProfile(payload);
+          refreshProfileFields(user);
+
+          if (field === "password") {
+            alert("Password updated successfully. Please sign in again.");
+            await Auth.logout();
+            window.location.href = "login.html";
+          }
+        } catch (err) {
+          alert(err.message || "Unable to update profile.");
         }
+      }
 
-        function removeDestFromWishlist(id) {
-            Wishlist.removeDestination(id);
-            renderDestinations();
-            updateCount();
-            Wishlist.showToast('Destination removed from Wishlist', 'remove');
+      function refreshProfileFields(user) {
+        document.getElementById("fieldFullName").textContent =
+          user.full_name || "—";
+        document.getElementById("fieldUsername").textContent =
+          user.username || "—";
+        document.getElementById("fieldEmail").textContent = user.email || "—";
+        document.getElementById("fieldPhoneNumber").textContent =
+          user.phone_number || "—";
+        document.getElementById("fieldLocation").textContent =
+          user.location || "—";
+        document.getElementById("fieldPassword").textContent = "••••••••";
+      }
+
+      async function loadProfile() {
+        Auth.requireAuth("login.html");
+
+        try {
+          const user = await Auth.getProfile();
+          refreshProfileFields(user);
+          updateCount();
+        } catch (err) {
+          console.error("Unable to load profile:", err);
+          window.location.href = "login.html";
         }
+      }
 
-        function removeActFromWishlist(id) {
-            Wishlist.removeActivity(id);
-            renderActivities();
-            updateCount();
-            Wishlist.showToast('Activity removed from Wishlist', 'remove');
-        }
+      function init() {
+        Auth.updateNavbarAuthState();
+        updateCount();
 
-        function clearAllWishlist() {
-            if (!confirm('Clear all items from your Wishlist?')) return;
-            Wishlist.clearAll();
-            renderWishlist();
-            Wishlist.showToast('Wishlist cleared', 'remove');
-        }
+        document
+          .getElementById("logoutBtn")
+          .addEventListener("click", async () => {
+            await Auth.logout();
+            window.location.href = "login.html";
+          });
 
-        // ── Edit profile fields ───────────────────────────────────────
-        async function editField(field) {
-            const fieldMap = {
-                fullName:    { id: 'fieldFullName',    key: 'full_name',     label: 'Full Name' },
-                username:    { id: 'fieldUsername',    key: 'username',      label: 'Username' },
-                email:       { id: 'fieldEmail',       key: 'email',         label: 'Email' },
-                phoneNumber: { id: 'fieldPhoneNumber', key: 'phone_number',  label: 'Phone Number' },
-                location:    { id: 'fieldLocation',    key: 'location',      label: 'Location' },
-                password:    { id: 'fieldPassword',    key: 'password',      label: 'Password' },
-            };
+        window.addEventListener("wishlistUpdated", () => {
+          const panel = document.getElementById("panel-wishlist");
+          if (panel.classList.contains("active")) renderWishlist();
+          updateCount();
+        });
 
-            const meta = fieldMap[field];
-            if (!meta) return;
+        loadProfile();
+      }
 
-            let current = document.getElementById(meta.id).textContent;
-            if (current === '—' || current === '••••••••') current = '';
-
-            let value;
-            if (field === 'password') {
-                value = prompt('Enter your new password:');
-                if (value === null) return;
-                const confirmValue = prompt('Confirm your new password:');
-                if (confirmValue !== value) {
-                    alert('Passwords do not match.');
-                    return;
-                }
-            } else {
-                value = prompt(`Enter new ${meta.label}:`, current);
-                if (value === null) return;
-            }
-
-            value = value.trim();
-            if (!value) return;
-
-            const payload = { [meta.key]: value };
-
-            try {
-                const user = await Auth.updateProfile(payload);
-                refreshProfileFields(user);
-
-                if (field === 'password') {
-                    alert('Password updated successfully. Please sign in again.');
-                    await Auth.logout();
-                    window.location.href = 'login.html';
-                }
-            } catch (err) {
-                alert(err.message || 'Unable to update profile.');
-            }
-        }
-
-        function refreshProfileFields(user) {
-            document.getElementById('fieldFullName').textContent    = user.full_name    || '—';
-            document.getElementById('fieldUsername').textContent    = user.username     || '—';
-            document.getElementById('fieldEmail').textContent       = user.email        || '—';
-            document.getElementById('fieldPhoneNumber').textContent = user.phone_number || '—';
-            document.getElementById('fieldLocation').textContent    = user.location     || '—';
-            document.getElementById('fieldPassword').textContent    = '••••••••';
-        }
-
-        async function loadProfile() {
-            Auth.requireAuth('login.html');
-
-            try {
-                const user = await Auth.getProfile();
-                refreshProfileFields(user);
-                updateCount();
-            } catch (err) {
-                console.error('Unable to load profile:', err);
-                window.location.href = 'login.html';
-            }
-        }
-
-        function init() {
-            Auth.updateNavbarAuthState();
-            updateCount();
-
-            document.getElementById('logoutBtn').addEventListener('click', async () => {
-                await Auth.logout();
-                window.location.href = 'login.html';
-            });
-
-            window.addEventListener('wishlistUpdated', () => {
-                const panel = document.getElementById('panel-wishlist');
-                if (panel.classList.contains('active')) renderWishlist();
-                updateCount();
-            });
-
-            loadProfile();
-        }
-
-        init();
+      init();
     </script>
-
-</body>
+  </body>
 </html>
