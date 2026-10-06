@@ -1,14 +1,50 @@
-function buildNavbar(activePage = '') {
-    const nav = document.getElementById('mainNavbar');
-    if (!nav) return;
+function setupMobileNav(nav) {
+  const menuButton = nav.querySelector(".mobile-nav-toggle");
+  const links = nav.querySelector(".nav-links");
+  const dropdown = nav.querySelector(".drop-down");
+  const dropdownButton = nav.querySelector(".dropdown-trigger");
 
-    nav.innerHTML = `
+  if (!menuButton || !links || !dropdown || !dropdownButton) return;
+
+  menuButton.addEventListener("click", () => {
+    const isOpen = menuButton.getAttribute("aria-expanded") !== "true";
+    menuButton.setAttribute("aria-expanded", String(isOpen));
+    menuButton.setAttribute(
+      "aria-label",
+      isOpen ? "Close navigation" : "Open navigation",
+    );
+    menuButton.classList.toggle("is-open", isOpen);
+    links.classList.toggle("is-open", isOpen);
+  });
+
+  dropdownButton.addEventListener("click", () => {
+    if (!window.matchMedia("(max-width: 800px)").matches) return;
+    const isOpen = dropdown.classList.toggle("is-open");
+    dropdownButton.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  links.addEventListener("click", (event) => {
+    if (!event.target.closest("a")) return;
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "Open navigation");
+    menuButton.classList.remove("is-open");
+    links.classList.remove("is-open");
+    dropdown.classList.remove("is-open");
+    dropdownButton.setAttribute("aria-expanded", "false");
+  });
+}
+
+function buildNavbar(activePage = "") {
+  const nav = document.getElementById("mainNavbar");
+  if (!nav) return;
+
+  nav.innerHTML = `
         <a href="../pages/index.html" class="logo">Itinerary <em>360</em></a>
         <nav class="nav-links">
-            <a href="../pages/index.html" class="${activePage === 'home' ? 'active' : ''}">Home</a>
+            <a href="../pages/index.html" class="${activePage === "home" ? "active" : ""}">Home</a>
 
             <div class="drop-down">
-                <span class="dropdown-trigger">Destinations</span>
+                <button type="button" class="dropdown-trigger" aria-expanded="false">Destinations</button>
                 <div class="dropdown-content">
                     <span class="dropdown-label">Konkan Coast</span>
                     <a href="../destinations/alibaug.html">Alibaug</a>
@@ -33,29 +69,34 @@ function buildNavbar(activePage = '') {
                 </div>
             </div>
 
-            <a href="../pages/index.html#all-destinations" class="${activePage === 'popular' ? 'active' : ''}">Popular</a>
-            <a href="../pages/about.html" class="${activePage === 'about' ? 'active' : ''}">About Us</a>
-            <a href="../pages/profile.html" class="${activePage === 'profile' ? 'active' : ''}">Profile</a>
+            <a href="../pages/index.html#all-destinations" class="${activePage === "popular" ? "active" : ""}">Popular</a>
+            <a href="../pages/about.html" class="${activePage === "about" ? "active" : ""}">About Us</a>
+            <a href="../pages/profile.html" class="${activePage === "profile" ? "active" : ""}">Profile</a>
         </nav>
-        <div style="display:flex;align-items:center;gap:10px;">
+        <button type="button" class="mobile-nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="primaryNavLinks">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-actions">
             <button class="dark-toggle" id="darkToggleBtn" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">🌙</button>
             <a href="../pages/login.html"><button class="login-btn">Login</button></a>
         </div>
     `;
+  nav.querySelector(".nav-links").id = "primaryNavLinks";
+  setupMobileNav(nav);
 }
 
 // For pages/ directory (relative paths differ)
-function buildNavbarPages(activePage = '') {
-    const nav = document.getElementById('mainNavbar');
-    if (!nav) return;
+function buildNavbarPages(activePage = "") {
+  const nav = document.getElementById("mainNavbar");
+  if (!nav) return;
 
-    nav.innerHTML = `
+  nav.innerHTML = `
         <a href="index.html" class="logo">Itinerary <em>360</em></a>
         <nav class="nav-links">
-            <a href="index.html" class="${activePage === 'home' ? 'active' : ''}">Home</a>
+            <a href="index.html" class="${activePage === "home" ? "active" : ""}">Home</a>
 
             <div class="drop-down">
-                <span class="dropdown-trigger">Destinations</span>
+                <button type="button" class="dropdown-trigger" aria-expanded="false">Destinations</button>
                 <div class="dropdown-content">
                     <span class="dropdown-label">Konkan Coast</span>
                     <a href="../destinations/alibaug.html">Alibaug</a>
@@ -80,13 +121,18 @@ function buildNavbarPages(activePage = '') {
                 </div>
             </div>
 
-            <a href="index.html#all-destinations" class="${activePage === 'popular' ? 'active' : ''}">Popular</a>
-            <a href="about.html" class="${activePage === 'about' ? 'active' : ''}">About Us</a>
-            <a href="profile.html" class="${activePage === 'profile' ? 'active' : ''}">Profile</a>
+            <a href="index.html#all-destinations" class="${activePage === "popular" ? "active" : ""}">Popular</a>
+            <a href="about.html" class="${activePage === "about" ? "active" : ""}">About Us</a>
+            <a href="profile.html" class="${activePage === "profile" ? "active" : ""}">Profile</a>
         </nav>
-        <div style="display:flex;align-items:center;gap:10px;">
+        <button type="button" class="mobile-nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="primaryNavLinks">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-actions">
             <button class="dark-toggle" id="darkToggleBtn" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">🌙</button>
             <a href="login.html"><button class="login-btn">Login</button></a>
         </div>
     `;
+  nav.querySelector(".nav-links").id = "primaryNavLinks";
+  setupMobileNav(nav);
 }

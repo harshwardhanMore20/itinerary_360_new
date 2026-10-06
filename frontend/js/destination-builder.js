@@ -13,7 +13,7 @@ function buildDestinationPage(data) {
             <nav class="nav-links">
                 <a href="../pages/index.html">Home</a>
                 <div class="drop-down">
-                    <span class="dropdown-trigger">Destinations</span>
+                    <button type="button" class="dropdown-trigger" aria-expanded="false">Destinations</button>
                     <div class="dropdown-content">
                         <span class="dropdown-label">Konkan Coast</span>
                         <a href="alibaug.html">Alibaug</a>
@@ -41,11 +41,46 @@ function buildDestinationPage(data) {
                 <a href="../pages/about.html">About Us</a>
                 <a href="../pages/profile.html">Profile</a>
             </nav>
-            <div style="display:flex;align-items:center;gap:10px;">
+            <button type="button" class="mobile-nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="primaryNavLinks">
+              <span></span><span></span><span></span>
+            </button>
+            <div class="nav-actions">
                 <button class="dark-toggle" id="darkToggleBtn" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">🌙</button>
                 <a href="../pages/login.html"><button class="login-btn">Login</button></a>
             </div>
         `;
+    const mobileMenuButton = nav.querySelector(".mobile-nav-toggle");
+    const navLinks = nav.querySelector(".nav-links");
+    const destinationsMenu = nav.querySelector(".drop-down");
+    const destinationsButton = nav.querySelector(".dropdown-trigger");
+    navLinks.id = "primaryNavLinks";
+
+    mobileMenuButton.addEventListener("click", () => {
+      const isOpen = mobileMenuButton.getAttribute("aria-expanded") !== "true";
+      mobileMenuButton.setAttribute("aria-expanded", String(isOpen));
+      mobileMenuButton.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation" : "Open navigation",
+      );
+      mobileMenuButton.classList.toggle("is-open", isOpen);
+      navLinks.classList.toggle("is-open", isOpen);
+    });
+
+    destinationsButton.addEventListener("click", () => {
+      if (!window.matchMedia("(max-width: 800px)").matches) return;
+      const isOpen = destinationsMenu.classList.toggle("is-open");
+      destinationsButton.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    navLinks.addEventListener("click", (event) => {
+      if (!event.target.closest("a")) return;
+      mobileMenuButton.setAttribute("aria-expanded", "false");
+      mobileMenuButton.setAttribute("aria-label", "Open navigation");
+      mobileMenuButton.classList.remove("is-open");
+      navLinks.classList.remove("is-open");
+      destinationsMenu.classList.remove("is-open");
+      destinationsButton.setAttribute("aria-expanded", "false");
+    });
     if (typeof Auth !== "undefined" && Auth.updateNavbarAuthState) {
       Auth.updateNavbarAuthState();
     }
